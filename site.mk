@@ -17,7 +17,7 @@ GLUON_SITE_PACKAGES := \
 	gluon-next-node \
 	gluon-mesh-vpn-fastd \
 	gluon-radvd \
-	gluon-status-page-ffda \
+	gluon-status-page \
 	iwinfo \
 	iptables \
 	haveged
