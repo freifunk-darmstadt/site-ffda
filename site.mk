@@ -25,6 +25,9 @@ GLUON_SITE_PACKAGES := \
 DEFAULT_GLUON_RELEASE := 0.6.2-$(shell date '+%Y%m%d')
 DEFAULT_GLUON_PRIORITY := 0
 
+# languages to include in images
+GLUON_LANGS ?= en de
+
 # Allow overriding the release number from the command line
 GLUON_RELEASE ?= $(DEFAULT_GLUON_RELEASE)
 GLUON_PRIORITY ?= ${DEFAULT_GLUON_PRIORITY}
