@@ -32,7 +32,7 @@ msgstr ""
 "<div class=\"the-key\">"
 " # <%= hostname %><br />"
 " # <%= sysconfig.primary_mac %><br />"
-"<%= pubkey %>"
+"key \"<%= pubkey %>\";"
 "</div>"
 
 msgid "gluon-config-mode:reboot"
