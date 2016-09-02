@@ -44,6 +44,9 @@ DEFAULT_GLUON_PRIORITY := 0
 # languages to include in images
 GLUON_LANGS ?= en de
 
+# region information for regulatory compliance
+GLUON_REGION ?= eu
+
 # Allow overriding the release number from the command line
 GLUON_RELEASE ?= $(DEFAULT_GLUON_RELEASE)
 GLUON_PRIORITY ?= ${DEFAULT_GLUON_PRIORITY}
