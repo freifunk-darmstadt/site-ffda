@@ -25,6 +25,7 @@ GLUON_SITE_PACKAGES := \
 	iwinfo \
 	iptables \
 	haveged \
+	ffho-ebtables-net-rules
 
 ifeq ($(GLUON_TARGET),x86-generic)
 # support the usb stack on x86 devices
