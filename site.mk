@@ -46,6 +46,7 @@ GLUON_SITE_PACKAGES := \
 # basic support for USB stack
 USB_PACKAGES_BASIC := \
 	kmod-usb-core \
+	kmod-ohci
 	kmod-usb2 \
 	kmod-usb3 \
 	usbutils
