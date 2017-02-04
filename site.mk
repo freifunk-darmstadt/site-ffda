@@ -114,20 +114,12 @@ USB_PACKAGES_NET := \
 	kmod-usb-net-smsc95xx
 
 # bnx2: BCM5706/5708/5709/5716 (Broadcom NetExtreme)
-# e1000: Intel(R) PRO/1000
-# forceeth: NVIDIA nForce
-# igb: Intel(R) 82575/82576 PCI-Express
-# natsemi: National Semiconductor DP8381x series
-# r8169: RTL-8169 PCI
-# via-rhine: Via Rhine
+# others may already be default packages on x86 targets
+# - https://github.com/freifunk-gluon/gluon/blob/master/targets/x86-64
+# - https://github.com/freifunk-gluon/gluon/blob/master/targets/x86-generic
+# - https://github.com/freifunk-gluon/gluon/blob/master/targets/x86-geode
 PCI_PACKAGES_NET := \
-	kmod-bnx2 \
-	kmod-e1000 \
-	kmod-forcedeth \
-	kmod-igb \
-	kmod-natsemi \
-	kmod-r8169 \
-	kmod-via-rhine \
+	kmod-bnx2
 
 ifeq ($(GLUON_TARGET),x86-generic)
 GLUON_SITE_PACKAGES += \
