@@ -145,7 +145,7 @@ endif
 
 # x86 Generic Purpose Hardware
 ifeq ($(GLUON_TARGET),x86-generic)
-GLUON_SITE_PACKAGES += 
+GLUON_SITE_PACKAGES += \
 	kmod-usb-core \
 	kmod-usb-ohci \
 	kmod-usb-uhci \
