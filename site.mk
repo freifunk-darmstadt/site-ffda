@@ -128,7 +128,7 @@ endif
 ifeq ($(GLUON_TARGET),mpc85xx-generic)
 GLUON_SITE_PACKAGES += \
 	kmod-usb-core \
-	kmod-usb2
+	kmod-usb2 \
 	usbutils \
 	$(USB_PACKAGES_SERIAL) \
 	$(USB_PACKAGES_STORAGE) \
