@@ -4,4 +4,4 @@ PACKAGES_FFDA_REPO=git://github.com/freifunk-darmstadt/ffda-packages.git
 PACKAGES_FFDA_COMMIT=dc47ad74c89e155c0c8543c78fc3c880b1333166
 
 PACKAGES_FFHO_REPO=git://github.com/FreifunkHochstift/ffho-packages.git
-PACKAGES_FFHO_COMMIT=1a6670ef01a50f5b40d186cb1beeb84b55438f8e
+PACKAGES_FFHO_COMMIT=45ed1bc77e9aa612a9daafc0e070df1401babf8c
