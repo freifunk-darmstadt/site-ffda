@@ -104,94 +104,70 @@ USB_PACKAGES_NET := \
 PCIE_PACKAGES_NET := \
 	kmod-bnx2
 
+
+# Group previous package sets
+USB_PKGS_WITHOUT_HID := \
+	usbutils \
+	$(USB_PACKAGES_SERIAL) \
+	$(USB_PACKAGES_STORAGE) \
+	$(USB_PACKAGES_NET)
+
+USB_PKGS := \
+	$(USB_PACKAGES_HID) \
+	$(USB_FULL_WITHOUT_HID)
+
+PCI_PKSG := \
+	pciutils \
+	$(PCIE_PACKAGES_NET)
+
+
 ##################################
 # Assign package sets to targets
 ##################################
 
 # Embedded Routers
 ifeq ($(GLUON_TARGET),ar71xx-generic)
-GLUON_SITE_PACKAGES += \
-	usbutils \
-	$(USB_PACKAGES_SERIAL) \
-	$(USB_PACKAGES_STORAGE) \
-	$(USB_PACKAGES_NET)
+GLUON_SITE_PACKAGES += $(USB_PKGS_WITHOUT_HID)
 endif
 
 ifeq ($(GLUON_TARGET),ar71xx-nand)
-GLUON_SITE_PACKAGES += \
-	usbutils \
-	$(USB_PACKAGES_SERIAL) \
-	$(USB_PACKAGES_STORAGE) \
-	$(USB_PACKAGES_NET)
+GLUON_SITE_PACKAGES += $(USB_PKGS_WITHOUT_HID)
 endif
 
 ifeq ($(GLUON_TARGET),mpc85xx-generic)
-GLUON_SITE_PACKAGES += \
-	kmod-usb-core \
-	kmod-usb2 \
-	usbutils \
-	$(USB_PACKAGES_SERIAL) \
-	$(USB_PACKAGES_STORAGE) \
-	$(USB_PACKAGES_NET)
+GLUON_SITE_PACKAGES += $(USB_PKGS_WITHOUT_HID)
 endif
 
 ifeq ($(GLUON_TARGET),ramips-mt7621)
-GLUON_SITE_PACKAGES += \
-	usbutils \
-	$(USB_PACKAGES_SERIAL) \
-	$(USB_PACKAGES_STORAGE) \
-	$(USB_PACKAGES_NET)
+GLUON_SITE_PACKAGES += $(USB_PKGS_WITHOUT_HID)
 endif
 
 # x86 Generic Purpose Hardware
 ifeq ($(GLUON_TARGET),x86-generic)
-GLUON_SITE_PACKAGES += \
-	kmod-usb-core \
-	kmod-usb-ohci \
-	kmod-usb-uhci \
-	kmod-usb2 \
-	usbutils \
-	$(USB_PACKAGES_HID) \
-	$(USB_PACKAGES_SERIAL) \
-	$(USB_PACKAGES_STORAGE) \
-	$(USB_PACKAGES_NET) \
-	$(PCIE_PACKAGES_NET)
+GLUON_SITE_PACKAGES += $(USB_PKGS) $(PCIE_PKGS)
 endif
 
 ifeq ($(GLUON_TARGET),x86-64)
-GLUON_SITE_PACKAGES += \
-	kmod-usb-core \
-	kmod-usb-ohci \
-	kmod-usb-uhci \
-	kmod-usb2 \
-	kmod-usb3 \
-	usbutils \
-	$(USB_PACKAGES_HID) \
-	$(USB_PACKAGES_SERIAL) \
-	$(USB_PACKAGES_STORAGE) \
-	$(USB_PACKAGES_NET) \
-	$(PCIE_PACKAGES_NET)
+GLUON_SITE_PACKAGES += $(USB_PKGS) $(PCIE_PKGS)
+endif
+
+# PCEngines ALIX Boards
+ifeq ($(GLUON_TARGET),x86-geode)
+GLUON_SITE_PACKAGES += $(USB_PKGS) $(PCIE_PKGS)
 endif
 
 #  Raspberry Pi A/B/B+
 ifeq ($(GLUON_TARGET),brcm2708-bcm2708)
-GLUON_SITE_PACKAGES += \
-	kmod-usb-core \
-	kmod-usb2 \
-	usbutils \
-	$(USB_PACKAGES_SERIAL) \
-	$(USB_PACKAGES_STORAGE) \
-	$(USB_PACKAGES_NET)
+GLUON_SITE_PACKAGES += $(USB_PKGS)
 endif
 
 # Raspberry Pi 2
 ifeq ($(GLUON_TARGET),brcm2708-bcm2709)
-GLUON_SITE_PACKAGES += \
-	kmod-usb-core \
-	kmod-usb2 \
-	usbutils \
-	$(USB_PACKAGES_HID) \
-	$(USB_PACKAGES_STORAGE) \
-	$(USB_PACKAGES_NET)
+GLUON_SITE_PACKAGES += $(USB_PKGS)
+endif
+
+# Banana Pi/Pro, Lamobo R1
+ifeq ($(GLUON_TARGET),sunxi)
+GLUON_SITE_PACKAGES += $(USB_PKGS)
 endif
 
