@@ -44,7 +44,8 @@ GLUON_SITE_PACKAGES := \
 	gluon-status-page \
 	iwinfo \
 	iptables \
-	haveged
+	haveged \
+	ffda-update-stabilizer
 
 ############################
 # Additional package sets
