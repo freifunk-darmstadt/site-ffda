@@ -31,6 +31,7 @@ GLUON_SITE_PACKAGES := \
 	gluon-ebtables-filter-multicast \
 	gluon-ebtables-filter-ra-dhcp \
 	gluon-ebtables-segment-mld \
+	gluon-ebtables-source-filter \
 	gluon-web-admin \
 	gluon-web-autoupdater \
 	gluon-web-mesh-vpn-fastd \
@@ -43,8 +44,7 @@ GLUON_SITE_PACKAGES := \
 	gluon-status-page \
 	iwinfo \
 	iptables \
-	haveged \
-	ffho-ebtables-net-rules
+	haveged
 
 ############################
 # Additional package sets
