@@ -1,4 +1,4 @@
 GLUON_SITE_FEEDS='ffda'
 
 PACKAGES_FFDA_REPO=git://github.com/freifunk-darmstadt/ffda-packages.git
-PACKAGES_FFDA_COMMIT=5a74ac0981a20f9dfd1bcabb4b80d2ff87ac84b1
+PACKAGES_FFDA_COMMIT=af10a67e91a7f066925c14b437f83a44013ae105
