@@ -1,7 +1,4 @@
-GLUON_SITE_FEEDS='ffda ffho'
-
-PACKAGES_FFDA_REPO=git://github.com/freifunk-darmstadt/ffda-packages.git
-PACKAGES_FFDA_COMMIT=3a215c12a03e19213877d913ef4971e90efa1e15
+GLUON_SITE_FEEDS='ffho'
 
 PACKAGES_FFHO_REPO=git://github.com/FreifunkHochstift/ffho-packages.git
 PACKAGES_FFHO_COMMIT=b4924e41bb3622b57e7ab8514dacbaa1d1133c45
