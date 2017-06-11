@@ -45,7 +45,6 @@ GLUON_SITE_PACKAGES := \
 	iwinfo \
 	iptables \
 	haveged \
-	ffda-update-stabilizer
 
 ############################
 # Additional package sets
