@@ -1,4 +1,4 @@
-DEFAULT_GLUON_RELEASE := 0.10.0~$(shell date '+%Y%m%d')
+DEFAULT_GLUON_RELEASE := 1.1~$(shell date '+%Y%m%d')
 DEFAULT_GLUON_PRIORITY := 0
 
 # languages to include in images
@@ -44,7 +44,7 @@ GLUON_SITE_PACKAGES := \
 	gluon-status-page \
 	iwinfo \
 	iptables \
-	haveged \
+	haveged
 
 ############################
 # Additional package sets
