@@ -34,6 +34,7 @@ GLUON_SITE_PACKAGES := \
 	gluon-ebtables-source-filter \
 	gluon-web-admin \
 	gluon-web-autoupdater \
+	gluon-web-logging \
 	gluon-web-mesh-vpn-fastd \
 	gluon-web-network \
 	gluon-web-private-wifi \
