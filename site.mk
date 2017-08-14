@@ -1,4 +1,4 @@
-DEFAULT_GLUON_RELEASE := 1.0.1~$(shell date '+%Y%m%d')
+DEFAULT_GLUON_RELEASE := 1.0.2~$(shell date '+%Y%m%d')
 DEFAULT_GLUON_PRIORITY := 0
 
 # languages to include in images
