@@ -45,6 +45,7 @@ GLUON_SITE_PACKAGES := \
 	iwinfo \
 	iptables \
 	haveged \
+	ffda-name-conformizer
 
 ############################
 # Additional package sets
