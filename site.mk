@@ -129,10 +129,25 @@ ifeq ($(GLUON_TARGET),mpc85xx-generic)
 GLUON_SITE_PACKAGES += $(USB_PKGS_WITHOUT_HID)
 endif
 
+ifeq ($(GLUON_TARGET),ipq806x)
+GLUON_SITE_PACKAGES += $(USB_PKGS_WITHOUT_HID)
+endif
+
+ifeq ($(GLUON_TARGET),ramips-mt7620)
+GLUON_SITE_PACKAGES += $(USB_PKGS_WITHOUT_HID)
+endif
+
 ifeq ($(GLUON_TARGET),ramips-mt7621)
 GLUON_SITE_PACKAGES += $(USB_PKGS_WITHOUT_HID)
 endif
 
+ifeq ($(GLUON_TARGET),ramips-mt7628)
+GLUON_SITE_PACKAGES += $(USB_PKGS_WITHOUT_HID)
+endif
+
+ifeq ($(GLUON_TARGET),ramips-rt305x)
+GLUON_SITE_PACKAGES += $(USB_PKGS_WITHOUT_HID)
+endif
 # x86 Generic Purpose Hardware
 ifeq ($(GLUON_TARGET),x86-generic)
 GLUON_SITE_PACKAGES += $(USB_PKGS) $(PCIE_PKGS)
@@ -154,6 +169,11 @@ endif
 
 # Raspberry Pi 2
 ifeq ($(GLUON_TARGET),brcm2708-bcm2709)
+GLUON_SITE_PACKAGES += $(USB_PKGS)
+endif
+
+# Raspberry Pi 3
+ifeq ($(GLUON_TARGET),brcm2708-bcm2710)
 GLUON_SITE_PACKAGES += $(USB_PKGS)
 endif
 
