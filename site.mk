@@ -155,9 +155,6 @@ ifeq ($(GLUON_TARGET),ramips-mt7628)
 GLUON_SITE_PACKAGES += $(USB_PKGS_WITHOUT_HID)
 endif
 
-ifeq ($(GLUON_TARGET),ramips-rt305x)
-GLUON_SITE_PACKAGES += $(USB_PKGS_WITHOUT_HID)
-endif
 # x86 Generic Purpose Hardware
 ifeq ($(GLUON_TARGET),x86-generic)
 GLUON_SITE_PACKAGES += $(USB_PKGS) $(PCIE_PKGS)
