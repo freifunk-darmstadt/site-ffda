@@ -35,6 +35,7 @@ GLUON_FEATURES := \
 # Additional packages to install on every image
 GLUON_SITE_PACKAGES := \
 	iwinfo \
+	gluon-print-site \
 	haveged \
 	respondd-module-airtime
 
