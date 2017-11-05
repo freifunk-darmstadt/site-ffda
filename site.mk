@@ -35,7 +35,10 @@ GLUON_FEATURES := \
 # Additional packages to install on every image
 GLUON_SITE_PACKAGES := \
 	iwinfo \
+	gluon-config-mode-domain-select \
+	gluon-ebtables-limit-arp \
 	gluon-print-site \
+	gluon-radv-filterd \
 	haveged \
 	respondd-module-airtime
 
