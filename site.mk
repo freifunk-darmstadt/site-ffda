@@ -156,7 +156,7 @@ USB_PKGS_WITHOUT_HID := \
 	$(USB_PKGS_NET)
 
 NO_USB_PKGS_WITHOUT_HID := \
-	-usbutils
+	-usbutils \
 	$(NO_USB_PKGS_SERIAL) \
 	$(NO_USB_PKGS_STORAGE) \
 	$(NO_USB_PKGS_NET)
