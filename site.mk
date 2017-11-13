@@ -90,7 +90,7 @@ USB_PKGS_STORAGE := \
 	kmod-nls-utf8 \
 	swap-utils
 
-USB_PKGS_STORAGE := \
+NO_USB_PKGS_STORAGE := \
 	-block-mount \
 	-blkid \
 	-kmod-fs-exfat \
