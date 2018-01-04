@@ -35,7 +35,8 @@ GLUON_FEATURES := \
 GLUON_SITE_PACKAGES := \
 	iwinfo \
 	haveged \
-	respondd-module-airtime
+	respondd-module-airtime \
+	gluon-radv-filterd
 
 ############################
 # Additional package sets
