@@ -12,7 +12,7 @@ GLUON_RELEASE ?= $(DEFAULT_GLUON_RELEASE)
 GLUON_PRIORITY ?= ${DEFAULT_GLUON_PRIORITY}
 
 # Prefer ath10k firmware with 802.11s support
-GLUON_ATH10K_MESH ?= 11s
+GLUON_WLAN_MESH ?= 11s
 
 # Featureset, these are either virtual or packages prefixed with "gluon-"
 GLUON_FEATURES := \
