@@ -36,6 +36,7 @@ GLUON_SITE_PACKAGES := \
 	iwinfo \
 	haveged \
 	respondd-module-airtime \
+	gluon-ebtables-limit-arp \
 	gluon-radv-filterd
 
 ############################
