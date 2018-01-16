@@ -45,7 +45,8 @@ GLUON_SITE_PACKAGES := \
 	iwinfo \
 	iptables \
 	haveged \
-	ffda-name-conformizer
+	respondd-module-airtime \
+	gluon-ebtables-limit-arp
 
 ############################
 # Additional package sets
