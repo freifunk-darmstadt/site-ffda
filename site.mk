@@ -63,7 +63,6 @@ NO_USB_PKGS_SERIAL := \
 USB_PKGS_STORAGE := \
 	block-mount \
 	blkid \
-	kmod-fs-exfat \
 	kmod-fs-ext4 \
 	kmod-fs-ntfs \
 	kmod-fs-vfat \
