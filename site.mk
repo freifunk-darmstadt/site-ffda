@@ -1,6 +1,9 @@
 DEFAULT_GLUON_RELEASE := 1.1~$(shell date '+%Y%m%d')
 DEFAULT_GLUON_PRIORITY := 0
 
+# enable multidomain support
+GLUON_MULTIDOMAIN=1
+
 # languages to include in images
 GLUON_LANGS ?= en de
 
