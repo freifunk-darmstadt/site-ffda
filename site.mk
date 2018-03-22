@@ -271,9 +271,7 @@ ifeq ($(GLUON_TARGET),ramips-mt7621)
 
 	# no usb port
 	GLUON_ubnt-erx_SITE_PACKAGES += $(NO_USB_PKGS_WITHOUT_HID)
-
-	# lowmem
-	GLUON_vocore-8M_SITE_PACKAGES += $(NO_USB_PKGS_WITHOUT_HID)
+	GLUON_ubnt-erx-sfp_SITE_PACKAGES += $(NO_USB_PKGS_WITHOUT_HID)
 endif
 
 ifeq ($(GLUON_TARGET),ramips-mt7628)
