@@ -19,10 +19,12 @@ GLUON_FEATURES := \
 	autoupdater \
 	ebtables-filter-multicast \
 	ebtables-filter-ra-dhcp \
+	ebtables-limit-arp \
 	ebtables-source-filter \
 	mesh-batman-adv-15 \
 	mesh-vpn-fastd \
 	radvd \
+	radv-filterd \
 	respondd \
 	status-page \
 	web-advanced \
@@ -35,9 +37,7 @@ GLUON_SITE_PACKAGES := \
 	ffda-migrate-update-branch \
 	iwinfo \
 	haveged \
-	respondd-module-airtime \
-	gluon-ebtables-limit-arp \
-	gluon-radv-filterd
+	respondd-module-airtime
 
 ############################
 # Additional package sets
