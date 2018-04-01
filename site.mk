@@ -34,7 +34,6 @@ GLUON_FEATURES := \
 
 # Additional packages to install on every image
 GLUON_SITE_PACKAGES := \
-	ffda-migrate-update-branch \
 	iwinfo \
 	haveged \
 	respondd-module-airtime
