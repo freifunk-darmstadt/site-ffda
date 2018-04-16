@@ -46,7 +46,8 @@ GLUON_SITE_PACKAGES := \
 	iptables \
 	haveged \
 	respondd-module-airtime \
-	gluon-ebtables-limit-arp
+	gluon-ebtables-limit-arp \
+	ffda-migrate-update-branch
 
 ############################
 # Additional package sets
