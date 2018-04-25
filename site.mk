@@ -47,7 +47,8 @@ GLUON_SITE_PACKAGES := \
 	haveged \
 	respondd-module-airtime \
 	gluon-ebtables-limit-arp \
-	ffda-migrate-update-branch
+	ffda-migrate-update-branch \
+	ffda-name-conformizer
 
 ############################
 # Additional package sets
