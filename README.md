@@ -1,10 +1,20 @@
-site-ffda
+site
 =========
 
-Site configuration for Freifunk Darmstadt Gluon Firmware
+Gluon site configuration to build firmware for Darmstadt.
 
+branches
+========
 
-tl;dr
-======
-
-```git clone https://github.com/freifunk-gluon/gluon; cd gluon; git clone https://github.com/freifunk-darmstadt/site-ffda/ site; make update; make GLUON_TARGET=... -j1337```
+* `unstable`: 
+    * matches Gluons `next` branch
+    * currently based on OpenWrt 18.06
+* `multidomain`
+    * matches Gluons `master` branch
+    * enables multidomain support (`GLUON_MULTIDOMAIN=1`)
+* `master`: 
+    * matches Gluons `master` branch
+    * basis for v2018.1 (the upcoming release)
+* `v2017.1.x`:
+    * matches Gluon `v2017.1.x` branch
+    * basis for stable/beta releases
