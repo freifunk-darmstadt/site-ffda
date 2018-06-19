@@ -113,8 +113,10 @@ USB_PKGS_NET := \
 	kmod-usb-net-cdc-subset \
 	kmod-usb-net-dm9601-ether \
 	kmod-usb-net-hso \
+	kmod-usb-net-ipheth \
 	kmod-usb-net-mcs7830 \
 	kmod-usb-net-pegasus \
+	kmod-usb-net-rndis \
 	kmod-usb-net-rtl8152 \
 	kmod-usb-net-smsc95xx
 
