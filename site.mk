@@ -1,4 +1,4 @@
-DEFAULT_GLUON_RELEASE := 1.0.7~$(shell date '+%Y%m%d')
+DEFAULT_GLUON_RELEASE := 1.0.8~$(shell date '+%Y%m%d')
 DEFAULT_GLUON_PRIORITY := 0
 
 # languages to include in images
@@ -47,8 +47,7 @@ GLUON_SITE_PACKAGES := \
 	haveged \
 	respondd-module-airtime \
 	gluon-ebtables-limit-arp \
-	ffda-migrate-update-branch \
-	ffda-name-conformizer
+	ffda-migrate-update-branch
 
 ############################
 # Additional package sets
