@@ -20,6 +20,7 @@ GLUON_WLAN_MESH ?= 11s
 # Featureset, these are either virtual or packages prefixed with "gluon-"
 GLUON_FEATURES := \
 	autoupdater \
+	config-mode-domain-select \
 	ebtables-filter-multicast \
 	ebtables-filter-ra-dhcp \
 	ebtables-limit-arp \
@@ -38,9 +39,6 @@ GLUON_FEATURES := \
 # Additional packages to install on every image
 GLUON_SITE_PACKAGES := \
 	iwinfo \
-	gluon-config-mode-domain-select \
-	gluon-ebtables-limit-arp \
-	gluon-radv-filterd \
 	haveged \
 	respondd-module-airtime
 
