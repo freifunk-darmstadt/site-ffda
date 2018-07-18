@@ -1,6 +1,9 @@
 DEFAULT_GLUON_RELEASE := 1.1~$(shell date '+%Y%m%d')
 DEFAULT_GLUON_PRIORITY := 0
 
+# enable multidomain support
+GLUON_MULTIDOMAIN=1
+
 # languages to include in images
 GLUON_LANGS ?= en de
 
@@ -35,6 +38,9 @@ GLUON_FEATURES := \
 # Additional packages to install on every image
 GLUON_SITE_PACKAGES := \
 	iwinfo \
+	gluon-config-mode-domain-select \
+	gluon-ebtables-limit-arp \
+	gluon-radv-filterd \
 	haveged \
 	respondd-module-airtime
 
