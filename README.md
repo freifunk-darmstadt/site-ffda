@@ -16,3 +16,11 @@ branches
 * `v2017.1.x`:
     * matches Gluon `v2017.1.x` branch
     * firmware version 1.0.x
+
+releases
+========
+
+| Release  | Gluon Commit |
+| -------- | -------- |
+| 1.2.1 | [v2018.1-7-gea9a69f7](https://github.com/freifunk-gluon/gluon/commit/ea9a69f7da94ca6c8b2f4a653c807c78f17e23ec) |
+| 1.2 | [v2018.1-5-g658f1ea4](https://github.com/freifunk-gluon/gluon/commit/658f1ea40294f26bd2c2e4632d541cb4e298ed94) |
