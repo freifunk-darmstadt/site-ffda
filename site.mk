@@ -167,6 +167,11 @@ PCIE_PKGS := \
 	pciutils \
 	$(PCIE_PACKAGES_NET)
 
+TLS_PKGS := \
+	ca-bundle \
+	ca-certificates \
+	libustream-mbedtls
+
 
 ##################################
 # Assign package sets to targets
@@ -222,11 +227,15 @@ ifeq ($(GLUON_TARGET),ar71xx-nand)
 endif
 
 ifeq ($(GLUON_TARGET),mpc85xx-generic)
-	GLUON_SITE_PACKAGES += $(USB_PKGS_WITHOUT_HID)
+	GLUON_SITE_PACKAGES += $(USB_PKGS_WITHOUT_HID) $(TLS_PKGS)
+endif
+
+ifeq ($(GLUON_TARGET),ipq40xx)
+	GLUON_SITE_PACKAGES += $(USB_PKGS_WITHOUT_HID) $(TLS_PKGS)
 endif
 
 ifeq ($(GLUON_TARGET),ipq806x)
-	GLUON_SITE_PACKAGES += $(USB_PKGS_WITHOUT_HID)
+	GLUON_SITE_PACKAGES += $(USB_PKGS_WITHOUT_HID) $(TLS_PKGS)
 endif
 
 ifeq ($(GLUON_TARGET),ramips-mt7620)
@@ -234,44 +243,46 @@ ifeq ($(GLUON_TARGET),ramips-mt7620)
 endif
 
 ifeq ($(GLUON_TARGET),ramips-mt7621)
-	GLUON_SITE_PACKAGES += $(USB_PKGS_WITHOUT_HID)
+	GLUON_SITE_PACKAGES += $(USB_PKGS_WITHOUT_HID) $(TLS_PKGS)
 
 	# no usb port
 	GLUON_ubnt-erx_SITE_PACKAGES += $(NO_USB_PKGS_WITHOUT_HID)
 	GLUON_ubnt-erx-sfp_SITE_PACKAGES += $(NO_USB_PKGS_WITHOUT_HID)
 endif
 
-ifeq ($(GLUON_TARGET),ramips-mt7628)
-	GLUON_SITE_PACKAGES += $(USB_PKGS_WITHOUT_HID)
+ifeq ($(GLUON_TARGET),ramips-mt76x8)
+	GLUON_SITE_PACKAGES += $(TLS_PKGS)
+
+	GLUON_vocore2_SITE_PACKAGES += $(USB_PKGS_WITHOUT_HID)
 endif
 
 # x86 Generic Purpose Hardware
 ifeq ($(GLUON_TARGET),x86-generic)
-	GLUON_SITE_PACKAGES += $(USB_PKGS) $(PCIE_PKGS)
+	GLUON_SITE_PACKAGES += $(USB_PKGS) $(PCIE_PKGS) $(TLS_PKGS)
 endif
 
 ifeq ($(GLUON_TARGET),x86-64)
-	GLUON_SITE_PACKAGES += $(USB_PKGS) $(PCIE_PKGS)
+	GLUON_SITE_PACKAGES += $(USB_PKGS) $(PCIE_PKGS) $(TLS_PKGS)
 endif
 
 # PCEngines ALIX Boards
 ifeq ($(GLUON_TARGET),x86-geode)
-	GLUON_SITE_PACKAGES += $(USB_PKGS) $(PCIE_PKGS)
+	GLUON_SITE_PACKAGES += $(USB_PKGS) $(PCIE_PKGS) $(TLS_PKGS)
 endif
 
 #  Raspberry Pi A/B/B+
 ifeq ($(GLUON_TARGET),brcm2708-bcm2708)
-	GLUON_SITE_PACKAGES += $(USB_PKGS)
+	GLUON_SITE_PACKAGES += $(USB_PKGS) $(TLS_PKGS)
 endif
 
 # Raspberry Pi 2
 ifeq ($(GLUON_TARGET),brcm2708-bcm2709)
-	GLUON_SITE_PACKAGES += $(USB_PKGS)
+	GLUON_SITE_PACKAGES += $(USB_PKGS) $(TLS_PKGS)
 endif
 
 # Raspberry Pi 3
 ifeq ($(GLUON_TARGET),brcm2708-bcm2710)
-	GLUON_SITE_PACKAGES += $(USB_PKGS)
+	GLUON_SITE_PACKAGES += $(USB_PKGS) $(TLS_PKGS)
 endif
 
 # Banana Pi/Pro, Lamobo R1
