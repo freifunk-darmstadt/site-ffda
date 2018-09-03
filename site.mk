@@ -21,6 +21,7 @@ GLUON_WLAN_MESH ?= 11s
 GLUON_FEATURES := \
 	autoupdater \
 	config-mode-domain-select \
+	config-mode-geo-location-osm \
 	ebtables-filter-multicast \
 	ebtables-filter-ra-dhcp \
 	ebtables-limit-arp \
