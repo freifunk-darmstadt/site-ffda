@@ -38,6 +38,7 @@ GLUON_FEATURES := \
 
 # Additional packages to install on every image
 GLUON_SITE_PACKAGES := \
+	ffda-domain-director \
 	iwinfo \
 	haveged \
 	respondd-module-airtime
