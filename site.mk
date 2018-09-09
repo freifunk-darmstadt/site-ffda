@@ -39,6 +39,7 @@ GLUON_FEATURES := \
 
 # Additional packages to install on every image
 GLUON_SITE_PACKAGES := \
+	ffda-domain-director \
 	ffda-migrate-update-branch \
 	ffda-update-stabilizer \
 	iwinfo \
