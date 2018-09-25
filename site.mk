@@ -22,6 +22,7 @@ GLUON_FEATURES := \
 	autoupdater \
 	config-mode-domain-select \
 	config-mode-geo-location-osm \
+	config-mode-outdoor \
 	ebtables-filter-multicast \
 	ebtables-filter-ra-dhcp \
 	ebtables-limit-arp \
