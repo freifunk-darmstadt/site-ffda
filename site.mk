@@ -32,6 +32,7 @@ GLUON_FEATURES := \
 	respondd \
 	status-page \
 	web-advanced \
+	web-ffda-domain-director \
 	web-logging \
 	web-private-wifi \
 	web-wizard
