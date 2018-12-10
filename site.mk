@@ -34,6 +34,7 @@ GLUON_FEATURES := \
 	respondd \
 	status-page \
 	web-advanced \
+	web-ffda-domain-director \
 	web-logging \
 	web-private-wifi \
 	web-wizard
@@ -43,7 +44,6 @@ GLUON_SITE_PACKAGES := \
 	ffda-domain-director \
 	ffda-migrate-update-branch \
 	ffda-update-stabilizer \
-	gluon-web-ffda-domain-director \
 	iwinfo \
 	haveged \
 	respondd-module-airtime
