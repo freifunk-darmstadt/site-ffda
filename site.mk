@@ -173,7 +173,6 @@ PCIE_PKGS := \
 
 TLS_PKGS := \
 	ca-bundle \
-	ca-certificates \
 	libustream-mbedtls
 
 
