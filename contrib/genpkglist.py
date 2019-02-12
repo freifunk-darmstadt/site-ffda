@@ -13,6 +13,9 @@ class PackageList:
         self.name = name
         self.pkgs = pkgs
 
+    def __lt__(self, other):
+        return self.name < other.name
+
     def render(self):
         return Template("""
 INCLUDE_PKGS_{{ name }} := \\
@@ -62,11 +65,11 @@ class Target:
 ifeq ($(GLUON_TARGET),{{ target }})
     GLUON_SITE_PACKAGES += {% for pkglist in pkglists %}$(INCLUDE_{{ pkglist.name }}){% if not loop.last %} {% endif %}{% endfor %}
     {% for device, exclude in excludes.items() %}
-    GLUON_{{ device }}_SITE_PACKAGES += {% for pkglist in exclude %}$(EXCLUDE_{{ pkglist.name }}){% if not loop.last %} {% endif %}{% endfor %}
+    GLUON_{{ device }}_SITE_PACKAGES += {% for pkglist in exclude|sort %}$(EXCLUDE_{{ pkglist.name }}){% if not loop.last %} {% endif %}{% endfor %}
     {%- endfor %}
 endif""").render(
             target=self.name,
-            pkglists=self.pkglists,
+            pkglists=sorted(self.pkglists),
             excludes=self.excludes
         )
 
@@ -172,6 +175,7 @@ targets.get('ar71xx-generic'). \
     add_pkglist(PKGS_USB_NET). \
     add_pkglist(PKGS_USB_SERIAL). \
     add_pkglist(PKGS_USB_STORAGE). \
+    add_pkglist(PKGS_TLS). \
     exclude(['alfa-network-hornet-ub',   # devices without usb ports
              'alfa-network-tube2h',
              'alfa-network-n2-n5',
@@ -263,6 +267,7 @@ targets.get('ramips-rt305x'). \
     add_pkglist(PKGS_USB_NET). \
     add_pkglist(PKGS_USB_SERIAL). \
     add_pkglist(PKGS_USB_STORAGE). \
+    add_pkglist(PKGS_TLS). \
     exclude(['d-link-dir-615-h1',  # devices without usb ports
              'd-link-dir-615-d']). \
     exclude(['a5-v11'])  # devices with less than 64MB memory
