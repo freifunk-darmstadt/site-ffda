@@ -18,12 +18,12 @@ class PackageList:
 
     def render(self):
         return Template("""
-INCLUDE_PKGS_{{ name }} := \\
+INCLUDE_{{ name }} := \\
 {%- for pkg in pkgs %}
     {{ pkg }}{% if not loop.last %} \{% endif %}
 {%- endfor %}
 
-EXCLUDE_PKGS_{{ name }} := \\
+EXCLUDE_{{ name }} := \\
 {%- for pkg in pkgs %}
     -{{ pkg }}{% if not loop.last %} \{% endif %}
 {%- endfor %}""").render(
@@ -60,13 +60,13 @@ class Target:
         if not self.pkglists:
             return """
 # no pkglists for target %s
-            """ % self.name
+""" % self.name
         return Template("""
 ifeq ($(GLUON_TARGET),{{ target }})
     GLUON_SITE_PACKAGES += {% for pkglist in pkglists %}$(INCLUDE_{{ pkglist.name }}){% if not loop.last %} {% endif %}{% endfor %}
-    {% for device, exclude in excludes.items() %}
+{% for device, exclude in excludes.items() %}
     GLUON_{{ device }}_SITE_PACKAGES += {% for pkglist in exclude|sort %}$(EXCLUDE_{{ pkglist.name }}){% if not loop.last %} {% endif %}{% endfor %}
-    {%- endfor %}
+{%- endfor %}
 endif""").render(
             target=self.name,
             pkglists=sorted(self.pkglists),
