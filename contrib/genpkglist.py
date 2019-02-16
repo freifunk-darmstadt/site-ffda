@@ -106,7 +106,7 @@ pkglists.append(PKGS_USB_HID)
 
 PKGS_USB_SERIAL = PackageList('USB_SERIAL', [
     'kmod-usb-serial',
-    'kmod-usb-ftdi',
+    'kmod-usb-serial-ftdi',
     'kmod-usb-serial-pl2303'
 ])
 pkglists.append(PKGS_USB_SERIAL)
@@ -118,18 +118,18 @@ PKGS_USB_STORAGE = PackageList('USB_STORAGE', [
     'kmod-fs-ntfs',
     'kmod-fs-vfat',
     'kmod-usb-storage',
-    'kmod-usb-storage-extras'  # Card Readers
-    'kmod-usb-storage-uas',    # USB Attached SCSI (UAS/UASP)
+    'kmod-usb-storage-extras',  # Card Readers
+    'kmod-usb-storage-uas',     # USB Attached SCSI (UAS/UASP)
     'kmod-nls-base',
-    'kmod-nls-cp1250',         # NLS Codepage 1250 (Eastern Europe)
-    'kmod-nls-cp437',          # NLS Codepage 437 (United States, Canada)
-    'kmod-nls-cp850',          # NLS Codepage 850 (Europe)
-    'kmod-nls-cp852',          # NLS Codepage 852 (Europe)
-    'kmod-nls-iso8859-1',      # NLS ISO 8859-1 (Latin 1)
-    'kmod-nls-iso8859-13',     # NLS ISO 8859-13 (Latin 7; Baltic)
-    'kmod-nls-iso8859-15',     # NLS ISO 8859-15 (Latin 9)
-    'kmod-nls-iso8859-2',      # NLS ISO 8859-2 (Latin 2)
-    'kmod-nls-utf8'            # NLS UTF-8
+    'kmod-nls-cp1250',          # NLS Codepage 1250 (Eastern Europe)
+    'kmod-nls-cp437',           # NLS Codepage 437 (United States, Canada)
+    'kmod-nls-cp850',           # NLS Codepage 850 (Europe)
+    'kmod-nls-cp852',           # NLS Codepage 852 (Europe)
+    'kmod-nls-iso8859-1',       # NLS ISO 8859-1 (Latin 1)
+    'kmod-nls-iso8859-13',      # NLS ISO 8859-13 (Latin 7; Baltic)
+    'kmod-nls-iso8859-15',      # NLS ISO 8859-15 (Latin 9)
+    'kmod-nls-iso8859-2',       # NLS ISO 8859-2 (Latin 2)
+    'kmod-nls-utf8'             # NLS UTF-8
 ])
 pkglists.append(PKGS_USB_STORAGE)
 

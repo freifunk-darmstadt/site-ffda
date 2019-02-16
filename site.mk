@@ -67,12 +67,12 @@ EXCLUDE_USB_HID := \
 
 INCLUDE_USB_SERIAL := \
     kmod-usb-serial \
-    kmod-usb-ftdi \
+    kmod-usb-serial-ftdi \
     kmod-usb-serial-pl2303
 
 EXCLUDE_USB_SERIAL := \
     -kmod-usb-serial \
-    -kmod-usb-ftdi \
+    -kmod-usb-serial-ftdi \
     -kmod-usb-serial-pl2303
 
 INCLUDE_USB_STORAGE := \
@@ -82,7 +82,8 @@ INCLUDE_USB_STORAGE := \
     kmod-fs-ntfs \
     kmod-fs-vfat \
     kmod-usb-storage \
-    kmod-usb-storage-extraskmod-usb-storage-uas \
+    kmod-usb-storage-extras \
+    kmod-usb-storage-uas \
     kmod-nls-base \
     kmod-nls-cp1250 \
     kmod-nls-cp437 \
@@ -101,7 +102,8 @@ EXCLUDE_USB_STORAGE := \
     -kmod-fs-ntfs \
     -kmod-fs-vfat \
     -kmod-usb-storage \
-    -kmod-usb-storage-extraskmod-usb-storage-uas \
+    -kmod-usb-storage-extras \
+    -kmod-usb-storage-uas \
     -kmod-nls-base \
     -kmod-nls-cp1250 \
     -kmod-nls-cp437 \
