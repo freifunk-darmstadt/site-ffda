@@ -262,16 +262,6 @@ targets.get('ramips-mt76x8'). \
     exclude(['tp-link-archer-c50-v3',
              'tp-link-tl-wr-841n-v13'])  # devices without usb ports
 
-targets.get('ramips-rt305x'). \
-    add_pkglist(PKGS_USB). \
-    add_pkglist(PKGS_USB_NET). \
-    add_pkglist(PKGS_USB_SERIAL). \
-    add_pkglist(PKGS_USB_STORAGE). \
-    add_pkglist(PKGS_TLS). \
-    exclude(['d-link-dir-615-h1',  # devices without usb ports
-             'd-link-dir-615-d']). \
-    exclude(['a5-v11'])  # devices with less than 64MB memory
-
 for target in ['x86-64', 'x86-generic', 'x86-geode']:
     targets.get(target). \
         add_pkglist(PKGS_USB). \
