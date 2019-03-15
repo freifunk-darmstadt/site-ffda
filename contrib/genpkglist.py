@@ -260,7 +260,7 @@ targets.get('ramips-mt76x8'). \
     add_pkglist(PKGS_USB_STORAGE). \
     add_pkglist(PKGS_TLS). \
     exclude(['tp-link-archer-c50-v3',
-             'tp-link-tl-wr-841n-v13'])  # devices without usb ports
+             'tp-link-tl-wr841n-v13'])  # devices without usb ports
 
 for target in ['x86-64', 'x86-generic', 'x86-geode']:
     targets.get(target). \
