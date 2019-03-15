@@ -8,8 +8,11 @@ branches
 
 * `master`: 
     * matches Gluons `master` branch
-    * basis for v2018.2 (the upcoming release)
-    * firmware version 1.3~
+    * basis for v2019.1 (the upcoming release)
+    * firmware version 1.5~
+* `v2018.2.x`:
+    * matches Gluon `v2018.2.x` branch
+    * firmware version: 1.4.x
 * `v2018.1.x`:
     * matches Gluon `v2018.1.x` branch
     * firmware version 1.2.x
@@ -22,6 +25,7 @@ releases
 
 | Release  | Gluon Commit |
 | -------- | -------- |
+| 1.4.0 | [v2018.2.1](https://github.com/freifunk-gluon/gluon/commit/d6cab552df269c3ee050d83adebe784e02eccb23) |
 | 1.2.8 | [v2018.1.4](https://github.com/freifunk-gluon/gluon/commit/a50cac3179e104ddaf0c53aeb1bd406339e55cb6) |
 | 1.2.7 | [v2018.1.3](https://github.com/freifunk-gluon/gluon/commit/ebf3a4885db183f47e3fe6e6e01940a4c7362ea6) |
 | 1.2.6 | [v2018.1.1-4-g51b7928a](https://github.com/freifunk-gluon/gluon/commit/51b7928a55155dc2a462cef5d4c045a81d9c1e0c) |
