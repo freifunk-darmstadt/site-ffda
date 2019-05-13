@@ -12,7 +12,8 @@ branches
     * firmware version 1.5~
 * `v2018.2.x`:
     * matches Gluon `v2018.2.x` branch
-    * firmware version: 1.4.x
+    * firmware version: 1.6.x
+    * version 1.4.x was never released and collided with early 1.5.x release
 * `v2018.1.x`:
     * matches Gluon `v2018.1.x` branch
     * firmware version 1.2.x
@@ -25,6 +26,7 @@ releases
 
 | Release  | Gluon Commit |
 | -------- | -------- |
+| 1.6.0 | [v2018.2.1-7-geed810aa](https://github.com/freifunk-gluon/gluon/commit/eed810aac1b0f6795622907b0de7dbc0fbfadc9d) |
 | 1.4.0 | [v2018.2.1](https://github.com/freifunk-gluon/gluon/commit/d6cab552df269c3ee050d83adebe784e02eccb23) |
 | 1.2.8 | [v2018.1.4](https://github.com/freifunk-gluon/gluon/commit/a50cac3179e104ddaf0c53aeb1bd406339e55cb6) |
 | 1.2.7 | [v2018.1.3](https://github.com/freifunk-gluon/gluon/commit/ebf3a4885db183f47e3fe6e6e01940a4c7362ea6) |
