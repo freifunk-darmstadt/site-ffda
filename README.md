@@ -26,6 +26,7 @@ releases
 
 | Release  | Gluon Commit |
 | -------- | -------- |
+| 1.6.1 | [v2018.2.1-19-gd3033163](https://github.com/freifunk-gluon/gluon/commit/d3033163a11c32370fb3977b0c5391ba144885dc) |
 | 1.6.0 | [v2018.2.1-7-geed810aa](https://github.com/freifunk-gluon/gluon/commit/eed810aac1b0f6795622907b0de7dbc0fbfadc9d) |
 | 1.4.0 | [v2018.2.1](https://github.com/freifunk-gluon/gluon/commit/d6cab552df269c3ee050d83adebe784e02eccb23) |
 | 1.2.8 | [v2018.1.4](https://github.com/freifunk-gluon/gluon/commit/a50cac3179e104ddaf0c53aeb1bd406339e55cb6) |
