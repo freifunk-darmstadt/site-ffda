@@ -1,18 +1,21 @@
 DEFAULT_GLUON_RELEASE := 1.5~$(shell date '+%Y%m%d')
 DEFAULT_GLUON_PRIORITY := 0
 
-# enable multidomain support
-GLUON_MULTIDOMAIN=1
+# Enable multidomain support
+GLUON_MULTIDOMAIN := 1
 
-# languages to include in images
+# Languages to include in images
 GLUON_LANGS ?= en de
 
-# region information for regulatory compliance
+# Region information for regulatory compliance
 GLUON_REGION ?= eu
 
 # Allow overriding the release number from the command line
 GLUON_RELEASE ?= $(DEFAULT_GLUON_RELEASE)
 GLUON_PRIORITY ?= ${DEFAULT_GLUON_PRIORITY}
+
+# Don't build factory firmware for deprecated devices
+GLUON_DEPRECATED ?= upgrade
 
 # Prefer ath10k firmware with 802.11s support
 GLUON_WLAN_MESH ?= 11s
