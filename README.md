@@ -9,7 +9,7 @@ branches
 * `master`: 
     * matches Gluons `master` branch
     * basis for v2019.1 (the upcoming release)
-    * firmware version 1.5~
+    * firmware version 1.7.x (vorher 1.5.x)
 * `v2018.2.x`:
     * matches Gluon `v2018.2.x` branch
     * firmware version: 1.4.x
