@@ -5,13 +5,16 @@ from collections import defaultdict
 from jinja2 import Template
 
 # path to your gluon checkout, will be used to find targets and devices
-GLUON_DIR = '/home/hexa/git/gluon/gluon/'
+GLUON_DIR = '/home/hexa/git/gluon/master/'
 
 
 class PackageList:
     def __init__(self, name: str, pkgs: list):
         self.name = name
         self.pkgs = pkgs
+
+    def __repr__(self):
+        return self.name
 
     def __lt__(self, other):
         return self.name < other.name
@@ -37,7 +40,7 @@ class Target:
         self.name = name
         self.devices = set()
         self.pkglists = set()
-        self.excludes = defaultdict(list)
+        self.excludes = defaultdict(set)
 
     def add_device(self, device: str):
         self.devices.add(device)
@@ -50,9 +53,9 @@ class Target:
         for device in devices:
             assert(device in self.devices), "Device %s not in target %s" % (device, self.name)
             if not pkglists:
-                self.excludes[device].extend(self.pkglists)
+                self.excludes[device] = self.pkglists
             else:
-                self.excludes[device].extend(pkglists)
+                self.excludes[device] = self.excludes[device].union(pkglists)
 
         return self
 
@@ -84,7 +87,7 @@ for targetfile in os.listdir(targetdir):
     with open(os.path.join(targetdir, targetfile)) as handle:
         for line in handle.readlines():
             if line.startswith('device'):
-                target.add_device(line.split()[1])
+                target.add_device(line.split('\'')[1])
 
     targets[targetfile] = target
 
@@ -176,56 +179,60 @@ targets.get('ar71xx-generic'). \
     add_pkglist(PKGS_USB_SERIAL). \
     add_pkglist(PKGS_USB_STORAGE). \
     add_pkglist(PKGS_TLS). \
-    exclude(['alfa-network-hornet-ub',   # devices without usb ports
-             'alfa-network-tube2h',
-             'alfa-network-n2-n5',
-             'allnet-all0315n',
-             'avm-fritz-wlan-repeater-300e',
-             'avm-fritz-wlan-repeater-450e',
-             'd-link-dir-825-rev-b1',
-             'meraki-mr12',
-             'meraki-mr16',
-             'ocedo-koala',
-             'openmesh-mr1750',
-             'openmesh-mr600',
-             'openmesh-mr900',
-             'openmesh-om2p',
-             'openmesh-om5p',
-             'openmesh-om5p-ac',
-             'tp-link-cpe210-v1.0',
-             'tp-link-cpe210-v2.0',
-             'tp-link-cpe510-v1.0',
-             'tp-link-wbs210-v1.20',
-             'tp-link-wbs510-v1.20',
-             'tp-link-archer-c25-v1',
-             'tp-link-archer-c58-v1',
-             'tp-link-archer-c60-v1',
-             'tp-link-re355',
-             'tp-link-re450',
-             'ubiquiti-airgateway',
-             'ubiquiti-airgateway-pro',
-             'ubiquiti-bullet-m',
-             'ubiquiti-rocket-m',
-             'ubiquiti-nanostation-m',
-             'ubiquiti-loco-m-xw',
-             'ubiquiti-nanostation-m-xw',
-             'ubiquiti-rocket-m-xw',
-             'ubiquiti-rocket-m-ti',
-             'ubiquiti-unifi',
-             'ubiquiti-unifi-ap-pro',
-             'ubiquiti-unifiap-outdoor',
-             'ubiquiti-unifiap-outdoor+',
-             'ubiquiti-ls-sr71',
-             'ubiquiti-unifi-ac-lite',
-             'ubiquiti-unifi-ac-pro',
-             'ubiquiti-unifi-ac-mesh']). \
-    exclude(['linksys-wrt160nl',  # devices with less than 64M memory
-             'tp-link-tl-wr710n-v1',
-             'tp-link-tl-wr710n-v2.1',
-             'tp-link-tl-wr842n-nd-v1',
-             'tp-link-tl-wr842n-nd-v2',
-             'tp-link-tl-wr1043n-nd-v1',
-             'ubiquiti-airrouter'])
+    exclude([  # devices without usb ports
+        'alfa-network-hornet-ub',
+        'alfa-network-tube2h',
+        'alfa-network-n2-n5',
+        'allnet-all0315n',
+        'avm-fritz-wlan-repeater-300e',
+        'avm-fritz-wlan-repeater-450e',
+        'd-link-dap-1330-rev-a1',
+        'd-link-dir-825-rev-b1',
+        'meraki-mr12',
+        'meraki-mr16',
+        'ocedo-koala',
+        'openmesh-mr1750',
+        'openmesh-mr600',
+        'openmesh-mr900',
+        'openmesh-om2p',
+        'openmesh-om5p',
+        'openmesh-om5p-ac',
+        'tp-link-cpe210-v1.0',
+        'tp-link-cpe210-v2.0',
+        'tp-link-cpe210-v3.0',
+        'tp-link-cpe510-v1.0',
+        'tp-link-wbs210-v1.20',
+        'tp-link-wbs510-v1.20',
+        'tp-link-archer-c25-v1',
+        'tp-link-archer-c58-v1',
+        'tp-link-archer-c60-v1',
+        'tp-link-re355',
+        'tp-link-re450',
+        'ubiquiti-airgateway',
+        'ubiquiti-airgateway-pro',
+        'ubiquiti-bullet-m',
+        'ubiquiti-rocket-m',
+        'ubiquiti-nanostation-m',
+        'ubiquiti-loco-m-xw',
+        'ubiquiti-nanostation-m-xw',
+        'ubiquiti-rocket-m-xw',
+        'ubiquiti-rocket-m-ti',
+        'ubiquiti-unifi',
+        'ubiquiti-unifi-ap-pro',
+        'ubiquiti-unifiap-outdoor',
+        'ubiquiti-unifiap-outdoor+',
+        'ubiquiti-ls-sr71',
+        'ubiquiti-unifi-ac-lite',
+        'ubiquiti-unifi-ac-pro',
+        'ubiquiti-unifi-ac-mesh'], pkglists=[PKGS_USB, PKGS_USB_NET, PKGS_USB_SERIAL, PKGS_USB_STORAGE]). \
+    exclude([  # devices with less than 64M memory
+        'linksys-wrt160nl',
+        'tp-link-tl-wr710n-v1',
+        'tp-link-tl-wr710n-v2.1',
+        'tp-link-tl-wr842n-nd-v1',
+        'tp-link-tl-wr842n-nd-v2',
+        'tp-link-tl-wr1043n-nd-v1',
+        'ubiquiti-airrouter'])
 
 for target in ['ar71xx-nand', 'ipq40xx', 'ipq806x', 'mpc85xx-generic', 'mvebu-cortexa9', 'ramips-mt7620', 'sunxi-cortexa7']:
     targets.get(target). \
@@ -234,6 +241,8 @@ for target in ['ar71xx-nand', 'ipq40xx', 'ipq806x', 'mpc85xx-generic', 'mvebu-co
         add_pkglist(PKGS_USB_SERIAL). \
         add_pkglist(PKGS_USB_STORAGE). \
         add_pkglist(PKGS_TLS)
+
+targets.get('mpc85xx-p1020').add_pkglist(PKGS_TLS)
 
 for target in ['brcm2708-bcm2708', 'brcm2708-bcm2709', 'brcm2708-bcm2710']:
     targets.get(target). \
@@ -250,8 +259,9 @@ targets.get('ramips-mt7621'). \
     add_pkglist(PKGS_USB_SERIAL). \
     add_pkglist(PKGS_USB_STORAGE). \
     add_pkglist(PKGS_TLS). \
-    exclude(['ubnt-erx',
-             'ubnt-erx-sfp'])  # devices without usb ports
+    exclude([  # devices without usb ports
+        'ubnt-erx',
+        'ubnt-erx-sfp'], pkglists=[PKGS_USB, PKGS_USB_NET, PKGS_USB_SERIAL, PKGS_USB_STORAGE])
 
 targets.get('ramips-mt76x8'). \
     add_pkglist(PKGS_USB). \
@@ -259,8 +269,9 @@ targets.get('ramips-mt76x8'). \
     add_pkglist(PKGS_USB_SERIAL). \
     add_pkglist(PKGS_USB_STORAGE). \
     add_pkglist(PKGS_TLS). \
-    exclude(['tp-link-archer-c50-v3',
-             'tp-link-tl-wr841n-v13'])  # devices without usb ports
+    exclude([   # devices without usb ports
+        'tp-link-archer-c50-v3',
+        'tp-link-tl-wr841n-v13'], pkglists=[PKGS_USB, PKGS_USB_NET, PKGS_USB_SERIAL, PKGS_USB_STORAGE])
 
 for target in ['x86-64', 'x86-generic', 'x86-geode']:
     targets.get(target). \
