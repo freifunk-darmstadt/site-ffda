@@ -155,7 +155,7 @@ PKGS_USB_NET = PackageList('USB_NET', [
 ])
 pkglists.append(PKGS_USB_NET)
 
-PKGS_PCI = PackageList('USB', ['pciutils'])
+PKGS_PCI = PackageList('PCI', ['pciutils'])
 pkglists.append(PKGS_PCI)
 
 PKGS_PCI_NET = PackageList('PCI_NET', [
