@@ -48,7 +48,6 @@ GLUON_FEATURES_standard := wireless-encryption-wpa3
 GLUON_SITE_PACKAGES := \
 	ffda-domain-director \
 	iwinfo \
-	haveged \
 	respondd-module-airtime
 
 
