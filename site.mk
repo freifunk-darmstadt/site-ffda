@@ -17,9 +17,6 @@ GLUON_PRIORITY ?= ${DEFAULT_GLUON_PRIORITY}
 # Don't build factory firmware for deprecated devices
 GLUON_DEPRECATED ?= upgrade
 
-# Prefer ath10k firmware with 802.11s support
-GLUON_WLAN_MESH ?= 11s
-
 # Featureset, these are either virtual or packages prefixed with "gluon-"
 GLUON_FEATURES := \
 	autoupdater \
