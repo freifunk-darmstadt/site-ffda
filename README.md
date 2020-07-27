@@ -10,9 +10,12 @@ branches
     * matches Gluons `master` branch
     * basis for the next release
     * firmware version: 2.1.x
+* `v2020.2.x`:
+    * matches Gluon `v2020.2.x` branch
+    * firmware version: 2.2.x
 * `v2020.1.x`:
     * matches Gluon `v2020.1.x` branch
-    * firmware version: 2.0.0
+    * firmware version: 2.0.x
 * `v2019.1.x`:
     * matches Gluon `v2019.1.x` branch
     * firmware version: 1.8.x
@@ -32,7 +35,8 @@ releases
 
 | Release  | Gluon Commit |
 | -------- | -------- |
-| 2.0.3 | [v2020.1.3](https://github.com/freifunk-gluon/gluon/commit/792a93b4dd8841daf6e8ff57be055b12384b2ce2)) |
+| 2.2.0 | [v2020.2](https://github.com/freifunk-gluon/gluon/commit/bf8c3babae71070c10408948a04d7ede138de8ff) |
+| 2.0.3 | [v2020.1.3](https://github.com/freifunk-gluon/gluon/commit/792a93b4dd8841daf6e8ff57be055b12384b2ce2) |
 | 2.0.2 | [v2020.1.2](https://github.com/freifunk-gluon/gluon/commit/7f3a30423b1aa9d5b654c9d7788adc50ce1e4f3c) |
 | 2.0.1 | [v2020.1.1](https://github.com/freifunk-gluon/gluon/commit/447595f0bb0df2e877e8f14fda1ef629ec30265f) |
 | 2.0.0 | [v2020.1](https://github.com/freifunk-gluon/gluon/commit/f83d6764424910bd2a154d80c0d7cda4d52ba382) |
