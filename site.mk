@@ -164,11 +164,11 @@ EXCLUDE_PCI_NET := \
 
 INCLUDE_TLS := \
     ca-bundle \
-    libustream-openssl
+    libustream-wolfssl
 
 EXCLUDE_TLS := \
     -ca-bundle \
-    -libustream-openssl
+    -libustream-wolfssl
 
 ifeq ($(GLUON_TARGET),ar71xx-generic)
     GLUON_SITE_PACKAGES += $(INCLUDE_TLS) $(INCLUDE_USB) $(INCLUDE_USB_NET) $(INCLUDE_USB_SERIAL) $(INCLUDE_USB_STORAGE)
