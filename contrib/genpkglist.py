@@ -165,7 +165,7 @@ pkglists.append(PKGS_PCI_NET)
 
 PKGS_TLS = PackageList('TLS', [
     'ca-bundle',
-    'libustream-wolfssl'
+    'libustream-opensl'
 ])
 pkglists.append(PKGS_TLS)
 
