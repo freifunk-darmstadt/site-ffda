@@ -6,10 +6,13 @@ Gluon site configuration to build firmware for Darmstadt.
 branches
 ========
 
-* `master`: 
+* `master`:
     * matches Gluons `master` branch
     * basis for the next release
     * firmware version: 2.3.x
+* `v2021.1.x`:
+    * matches Gluon `v2021.1.x` branch
+    * firmware version: 2.4.x
 * `v2020.2.x`:
     * matches Gluon `v2020.2.x` branch
     * firmware version: 2.2.x
@@ -35,6 +38,7 @@ releases
 
 | Release  | Gluon Commit |
 | -------- | -------- |
+| 2.4.0 | [v2021.1](https://github.com/freifunk-gluon/gluon/commit/0f9a6334a04da2e3916b1e1ba037f49647fb0064) |
 | 2.2.1 | [v2020.2.3](https://github.com/freifunk-gluon/gluon/commit/197e44da8ba47104ac088aedac73cde35135db67) |
 | 2.2.0 | [v2020.2](https://github.com/freifunk-gluon/gluon/commit/bf8c3babae71070c10408948a04d7ede138de8ff) |
 | 2.0.3 | [v2020.1.3](https://github.com/freifunk-gluon/gluon/commit/792a93b4dd8841daf6e8ff57be055b12384b2ce2) |
