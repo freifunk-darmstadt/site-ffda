@@ -152,7 +152,7 @@ PKGS_USB_NET = PackageList('USB_NET', [
     'kmod-usb-net-rndis',
     'kmod-usb-net-rtl8152',
     'kmod-usb-net-smsc95xx',
-    'gluon-ffda-usb-wan-hotplug',
+    'ffda-usb-wan-hotplug',
 ])
 pkglists.append(PKGS_USB_NET)
 
