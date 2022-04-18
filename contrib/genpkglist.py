@@ -222,7 +222,6 @@ targets.get('ath79-generic'). \
         'tp-link-cpe210-v1',
         'tp-link-cpe210-v2',
         'tp-link-cpe220-v3',
-        'tp-link-cpe220-v3',
         'tp-link-cpe510-v1',
         'tp-link-cpe510-v2',
         'tp-link-cpe510-v3',
