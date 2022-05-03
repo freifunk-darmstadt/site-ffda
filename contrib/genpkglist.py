@@ -191,12 +191,6 @@ PKGS_PCI_NET = PackageList('PCI_NET', [
 ])
 pkglists.append(PKGS_PCI_NET)
 
-PKGS_TLS = PackageList('TLS', [
-    'ca-bundle',
-    'libustream-openssl'
-])
-pkglists.append(PKGS_TLS)
-
 #
 # package assignment
 #
@@ -224,22 +218,18 @@ for target in ['ipq40xx-generic', 'ipq806x-generic', 'mpc85xx-p1010', 'mpc85xx-p
         add_pkglist(PKGS_USB). \
         add_pkglist(PKGS_USB_NET). \
         add_pkglist(PKGS_USB_SERIAL). \
-        add_pkglist(PKGS_USB_STORAGE). \
-        add_pkglist(PKGS_TLS)
+        add_pkglist(PKGS_USB_STORAGE)
 
 targets.get('lantiq-xrx200'). \
         add_pkglist(PKGS_USB). \
         add_pkglist(PKGS_USB_NET). \
         add_pkglist(PKGS_USB_SERIAL). \
         add_pkglist(PKGS_USB_STORAGE). \
-        add_pkglist(PKGS_TLS). \
         exclude([ # 7M usable firmware space + USB port
             'avm-fritz-box-7412',
             'tp-link-td-w8970',
             'tp-link-td-w8980'
         ])
-
-targets.get('mpc85xx-p1020').add_pkglist(PKGS_TLS)
 
 for target in ['bcm27xx-bcm2708', 'bcm27xx-bcm2709', 'bcm27xx-bcm2710']:
     targets.get(target). \
@@ -247,15 +237,13 @@ for target in ['bcm27xx-bcm2708', 'bcm27xx-bcm2709', 'bcm27xx-bcm2710']:
         add_pkglist(PKGS_USB_NET). \
         add_pkglist(PKGS_USB_SERIAL). \
         add_pkglist(PKGS_USB_STORAGE). \
-        add_pkglist(PKGS_USB_HID). \
-        add_pkglist(PKGS_TLS)
+        add_pkglist(PKGS_USB_HID)
 
 targets.get('mediatek-mt7622'). \
     add_pkglist(PKGS_USB). \
     add_pkglist(PKGS_USB_NET). \
     add_pkglist(PKGS_USB_SERIAL). \
     add_pkglist(PKGS_USB_STORAGE). \
-    add_pkglist(PKGS_TLS). \
     exclude([  # devices without usb ports
         'ubiquiti-unifi-6-lr'], pkglists=[PKGS_USB, PKGS_USB_NET, PKGS_USB_SERIAL, PKGS_USB_STORAGE])
 
@@ -264,7 +252,6 @@ targets.get('ramips-mt7621'). \
     add_pkglist(PKGS_USB_NET). \
     add_pkglist(PKGS_USB_SERIAL). \
     add_pkglist(PKGS_USB_STORAGE). \
-    add_pkglist(PKGS_TLS). \
     exclude([  # devices without usb ports
         'netgear-ex6150',
         'ubiquiti-edgerouter-x',
@@ -275,7 +262,6 @@ targets.get('ramips-mt76x8'). \
     add_pkglist(PKGS_USB_NET). \
     add_pkglist(PKGS_USB_SERIAL). \
     add_pkglist(PKGS_USB_STORAGE). \
-    add_pkglist(PKGS_TLS). \
     include([ # 7M usable firmware space + USB port
         'gl-mt300n-v2',
         'gl.inet-microuter-n300',
@@ -289,8 +275,7 @@ for target in ['x86-64', 'x86-generic', 'x86-geode']:
         add_pkglist(PKGS_USB_SERIAL). \
         add_pkglist(PKGS_USB_STORAGE). \
         add_pkglist(PKGS_PCI). \
-        add_pkglist(PKGS_PCI_NET). \
-        add_pkglist(PKGS_TLS)
+        add_pkglist(PKGS_PCI_NET)
 
 
 if __name__ == '__main__':
