@@ -133,8 +133,7 @@ INCLUDE_USB_NET := \
     kmod-usb-net-pegasus \
     kmod-usb-net-rndis \
     kmod-usb-net-rtl8152 \
-    kmod-usb-net-smsc95xx \
-    ffda-usb-wan-hotplug
+    kmod-usb-net-smsc95xx
 
 EXCLUDE_USB_NET := \
     -kmod-mii \
@@ -151,8 +150,7 @@ EXCLUDE_USB_NET := \
     -kmod-usb-net-pegasus \
     -kmod-usb-net-rndis \
     -kmod-usb-net-rtl8152 \
-    -kmod-usb-net-smsc95xx \
-    -ffda-usb-wan-hotplug
+    -kmod-usb-net-smsc95xx
 
 INCLUDE_PCI := \
     pciutils
