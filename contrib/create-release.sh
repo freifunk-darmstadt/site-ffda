@@ -27,6 +27,8 @@ RELEASE_NAME="${1-}"
 
 # Regex for testing firmware tag
 TESTING_TAG_RE="^[2-9].[0-9]~[0-9]{8}$"
+# Regex for unstable firmware tag
+UNSTABLE_TAG_RE="^[2-9].[0-9]u~[0-9]{8}$"
 # Regex for release firmware tag
 RELEASE_TAG_RE="^[2-9].[0-9].[0-9]$"
 
@@ -38,6 +40,9 @@ if [ -n "$RELEASE_NAME" ]; then
     elif [[ "$RELEASE_NAME" =~ $TESTING_TAG_RE ]]; then
         # Testing Tag
         echo "Provided Testing Name '$RELEASE_NAME' is valid"
+    elif [[ "$RELEASE_NAME" =~ $UNSTABLE_TAG_RE ]]; then
+        # unstable Tag
+        echo "Provided Unstable Name '$RELEASE_NAME' is valid"
     else
         # Custom Tag
         check_input_y "Provided release name is not a valid release or testing tag."
