@@ -42,6 +42,7 @@ GLUON_FEATURES_standard := wireless-encryption-wpa3
 # Additional packages to install on every image
 GLUON_SITE_PACKAGES := \
 	ca-bundle \
+	ffda-update-stabilizer \
 	iwinfo \
 	libustream-wolfssl \
 	respondd-module-airtime
