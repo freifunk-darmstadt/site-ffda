@@ -1,4 +1,4 @@
-DEFAULT_GLUON_RELEASE := 2.5~$(shell date '+%Y%m%d')
+DEFAULT_GLUON_RELEASE := 2.7~$(shell date '+%Y%m%d')
 DEFAULT_GLUON_PRIORITY := 0
 
 # Enable multidomain support
@@ -42,7 +42,6 @@ GLUON_FEATURES_standard := wireless-encryption-wpa3
 # Additional packages to install on every image
 GLUON_SITE_PACKAGES := \
 	ca-bundle \
-	ffda-update-stabilizer \
 	iwinfo \
 	libustream-wolfssl \
 	respondd-module-airtime
