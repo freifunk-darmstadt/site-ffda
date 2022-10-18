@@ -1,4 +1,4 @@
-DEFAULT_GLUON_RELEASE := 2.6~$(shell date '+%Y%m%d')
+DEFAULT_GLUON_RELEASE := 2.6.1~$(shell date '+%Y%m%d')
 DEFAULT_GLUON_PRIORITY := 0
 
 # Enable multidomain support
