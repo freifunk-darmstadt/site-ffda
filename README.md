@@ -41,6 +41,7 @@ releases
 
 | Release  | Gluon Commit |
 | -------- | -------- |
+| 2.6.1 | [v2022.1.1](https://github.com/freifunk-gluon/gluon/releases/tag/v2022.1.1) |
 | 2.6.0 | [v2022.1](https://github.com/freifunk-gluon/gluon/commit/52883f5eb52137d808785fdef62b42bad6020fac) |
 | 2.4.1 | [v2021.1.1](https://github.com/freifunk-gluon/gluon/commit/0d2f834d317eb49fe2bd0e6ddbba62f5a031fd2b) |
 | 2.4.0 | [v2021.1](https://github.com/freifunk-gluon/gluon/commit/0f9a6334a04da2e3916b1e1ba037f49647fb0064) |
