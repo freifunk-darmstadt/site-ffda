@@ -37,7 +37,9 @@ GLUON_FEATURES := \
 	web-private-wifi \
 	web-wizard
 
-GLUON_FEATURES_standard := wireless-encryption-wpa3
+GLUON_FEATURES_standard := \
+	web-cellular \
+	wireless-encryption-wpa3
 
 # Additional packages to install on every image
 GLUON_SITE_PACKAGES := \
