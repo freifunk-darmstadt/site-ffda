@@ -1,10 +1,8 @@
-site
-=========
+# site
 
 Gluon site configuration to build firmware for Darmstadt.
 
-branches
-========
+### Branches
 
 * `master`:
     * matches Gluons `master` branch
@@ -36,8 +34,7 @@ branches
     * matches Gluon `v2017.1.x` branch
     * firmware version 1.0.x
 
-releases
-========
+## Releases
 
 | Release  | Gluon Commit |
 | -------- | -------- |
@@ -69,3 +66,32 @@ releases
 | 1.2.2 | [v2018.1-11-g6a3d5554](https://github.com/freifunk-gluon/gluon/commit/6a3d5554c170da07c3c5be3741ab9921e5839159) |
 | 1.2.1 | [v2018.1-7-gea9a69f7](https://github.com/freifunk-gluon/gluon/commit/ea9a69f7da94ca6c8b2f4a653c807c78f17e23ec) |
 | 1.2 | [v2018.1-5-g658f1ea4](https://github.com/freifunk-gluon/gluon/commit/658f1ea40294f26bd2c2e4632d541cb4e298ed94) |
+
+
+## Continous Integration
+
+Firmware is built using GitHub actions as a CI. For more information, see the
+`README.md` in the `.github` subdirectory.
+
+### Usage
+#### Trigger a Build
+Builds are triggered by pushing a commit or tag to a branch. Both actions trigger a build cycle.
+Artifacts are available after the CI finished and are available on a per-target basis.
+
+#### Sign a Release
+This repository contains a convenient script to sign a release created by this CI implementation.
+The `sign-release.sh` script located in the `contrib` subfolder allows to obtain a signature for
+a released firmware.
+
+```
+Usage: contrib/sign-release.sh <release-version> <private-key-path>
+Example: contrib/sign-release.sh 2.0.0 /path/to/private-key.ecdsakey
+```
+
+### Releases
+Releases are triggered by pushing a tag to GitHub.
+
+The resulting firmware is versioned by the tag, while the first `-` in the tag name is replaced by a `~` character.
+
+While Job artifacts expire eventually, artifacts from releases are preserved by creating a release on GitHub and uploading
+build-outputs as well as the generated manifest to it.
