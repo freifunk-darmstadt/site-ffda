@@ -13,7 +13,7 @@ SCRIPT_DIR="$(dirname "$0")"
 # This Script is used to sign a Firmware Release using
 # a private ECDSA key.
 
-DEFAULT_GITHUB_REPOSITORY_URL="blocktrron/gha-site-ci"
+DEFAULT_GITHUB_REPOSITORY_URL="freifunk-darmstadt/site-ffda"
 
 GITHUB_REPOSITORY_URL="${GITHUB_REPOSITORY_URL:-$DEFAULT_GITHUB_REPOSITORY_URL}"
 
