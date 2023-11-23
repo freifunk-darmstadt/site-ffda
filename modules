@@ -4,4 +4,4 @@ PACKAGES_FFDA_REPO=https://git.darmstadt.ccc.de/ffda/firmware/packages.git
 PACKAGES_FFDA_COMMIT=d940edbe8ee74207a3ce9fe9ef0bad5745f5cf25
 
 PACKAGES_COMMUNITY_REPO=https://github.com/freifunk-gluon/community-packages.git
-PACKAGES_COMMUNITY_COMMIT=c3287a1b0bfbe72055332f23ce635c4c8e3d4460
+PACKAGES_COMMUNITY_COMMIT=20ab814b882d38ca30c2cb22828bdb3782c869c6
