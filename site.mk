@@ -46,7 +46,8 @@ GLUON_SITE_PACKAGES := \
 	ca-bundle \
 	iwinfo \
 	libustream-wolfssl \
-	respondd-module-airtime
+	respondd-module-airtime \
+	ffda-update-stabilizer
 
 GLUON_SITE_PACKAGES_standard := \
 	ffda-gluon-usteer
