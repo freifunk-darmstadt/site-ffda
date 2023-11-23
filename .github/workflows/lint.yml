@@ -34,7 +34,7 @@ jobs:
 
   json:
     name: "JSON"
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     env:
       BUILD_INFO: ${{ github.workspace }}/.github/build-info.json
     steps:
