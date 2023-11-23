@@ -35,7 +35,7 @@ jobs:
         ${{ steps.build-metadata.outputs.deploy }}
       target-whitelist: >-
         ${{ steps.build-metadata.outputs.target-whitelist }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     name: Determine build-meta
     steps:
       - uses: actions/checkout@v4
@@ -55,7 +55,7 @@ jobs:
     needs: build-meta
     outputs:
       targets: ${{ steps.get-targets.outputs.targets }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     name: Get Gluon targets
     steps:
       - uses: actions/checkout@v4
@@ -77,7 +77,7 @@ jobs:
 
   host-tools:
     needs: build-meta
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     name: Build host-tools
     steps:
       - uses: actions/checkout@v4
@@ -152,7 +152,7 @@ jobs:
       fail-fast: false
       matrix:
         target: ${{ fromJSON(needs.targets.outputs.targets) }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
 
@@ -213,7 +213,7 @@ jobs:
 
   manifest:
     needs: [build, build-meta, targets]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
 
@@ -324,7 +324,7 @@ jobs:
 
   deploy:
     needs: [build, build-meta, targets, manifest]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     if: ${{ needs.build-meta.outputs.deploy != '0' }}
     steps:
       - uses: actions/checkout@v4
@@ -367,7 +367,7 @@ jobs:
 
   create-release:
     needs: [build, build-meta, targets, manifest]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     if: ${{ needs.build-meta.outputs.create-release != '0' }}
     permissions:
       contents: write
