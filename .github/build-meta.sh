@@ -29,14 +29,22 @@ CUSTOM_TESTING_TAG_RE="^[2-9].[0-9]-[0-9]{8}"
 RELEASE_TAG_RE="^[2-9].[0-9].[0-9]$"
 
 # Get Gluon version information
-GLUON_REPOSITORY="$(jq -r -e .gluon.repository "$SCRIPT_DIR/build-info.json")"
-GLUON_COMMIT="$(jq -r -e .gluon.commit "$SCRIPT_DIR/build-info.json")"
+if [ -n "$WORKFLOW_DISPATCH_REPOSITORY" ] && [ -n "$WORKFLOW_DISPATCH_REFERENCE" ]; then
+	# Get Gluon version information from dispatch event
+	GLUON_REPOSITORY="$WORKFLOW_DISPATCH_REPOSITORY"
+	GLUON_COMMIT="$WORKFLOW_DISPATCH_REFERENCE"
+else
+	# Get Gluon version information from build-info.json
+	GLUON_REPOSITORY="$(jq -r -e .gluon.repository "$SCRIPT_DIR/build-info.json")"
+	GLUON_COMMIT="$(jq -r -e .gluon.commit "$SCRIPT_DIR/build-info.json")"
+fi
 
 # Get Container version information
 CONTAINER_VERSION="$(jq -r -e .container.version "$SCRIPT_DIR/build-info.json")"
 
 # Get Default Release version from site.mk
 DEFAULT_RELEASE_VERSION="$(make --no-print-directory -C "$SCRIPT_DIR/.." -f ci-build.mk version)"
+DEFAULT_RELEASE_VERSION="$DEFAULT_RELEASE_VERSION-$GIT_SHORT_HASH"
 
 # Enable Manifest generation conditionally
 MANIFEST_STABLE="0"
@@ -46,12 +54,11 @@ MANIFEST_TESTING="0"
 # Only Sign manifest on release builds
 SIGN_MANIFEST="0"
 
+echo "GitHub Event-Name: $GITHUB_EVENT_NAME"
 echo "GitHub Ref-Type: $GITHUB_REF_TYPE"
 echo "GitHub Ref-Name: $GITHUB_REF_NAME"
 
-# Determine Autoupdater Branch to use
-if [ "$GITHUB_REF_TYPE" = "branch" ]; then
-	DEFAULT_RELEASE_VERSION="$DEFAULT_RELEASE_VERSION-$GIT_SHORT_HASH"
+if [ "$GITHUB_EVENT_NAME" = "push"  ] && [ "$GITHUB_REF_TYPE" = "branch" ]; then
 	if [ "$GITHUB_REF_NAME" = "master" ]; then
 		# Push to master - autoupdater Branch is testing and enabled
 		AUTOUPDATER_ENABLED="1"
@@ -70,7 +77,7 @@ if [ "$GITHUB_REF_TYPE" = "branch" ]; then
 		AUTOUPDATER_ENABLED="0"
 		AUTOUPDATER_BRANCH="testing"
 	fi
-elif [ "$GITHUB_REF_TYPE" = "tag" ]; then
+elif [ "$GITHUB_EVENT_NAME" = "push"  ] && [ "$GITHUB_REF_TYPE" = "tag" ]; then
 	if [[ "$GITHUB_REF_NAME" =~ $TESTING_TAG_RE ]]; then
 		# Testing release - autoupdater Branch is testing and enabled
 		AUTOUPDATER_ENABLED="1"
@@ -108,6 +115,10 @@ elif [ "$GITHUB_REF_TYPE" = "tag" ]; then
 	fi
 
 	CREATE_RELEASE="1"
+elif [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+	# Workflow Dispatch - autoupdater Branch is testing and disabled
+	AUTOUPDATER_ENABLED="0"
+	AUTOUPDATER_BRANCH="testing"
 else
 	echo "Unknown ref type $GITHUB_REF_TYPE"
 	exit 1
