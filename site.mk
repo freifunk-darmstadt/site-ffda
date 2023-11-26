@@ -45,7 +45,7 @@ GLUON_FEATURES_standard := \
 GLUON_SITE_PACKAGES := \
 	ca-bundle \
 	iwinfo \
-	libustream-wolfssl \
+	libustream-mbedtls \
 	respondd-module-airtime \
 	ffda-update-stabilizer
 
