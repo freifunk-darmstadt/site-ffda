@@ -2,7 +2,16 @@
 name: "Build Gluon images"
 
 # yamllint disable-line rule:truthy
-on: [push]
+on:
+  push:
+  workflow_dispatch:
+    inputs:
+      repository:
+        description: 'Repository path (e.g. freifunk-gluon/gluon)'
+        required: true
+      reference:
+        description: 'Reference (commit / tag)'
+        required: true
 
 jobs:
   build-meta:
@@ -35,6 +44,9 @@ jobs:
         ${{ steps.build-metadata.outputs.deploy }}
       target-whitelist: >-
         ${{ steps.build-metadata.outputs.target-whitelist }}
+    env:
+      WORKFLOW_DISPATCH_REPOSITORY: ${{ github.event.inputs.repository }}
+      WORKFLOW_DISPATCH_REFERENCE: ${{ github.event.inputs.reference }}
     runs-on: ubuntu-22.04
     name: Determine build-meta
     steps:
