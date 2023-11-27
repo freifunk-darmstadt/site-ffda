@@ -17,7 +17,13 @@ DEPLOY="0"
 CREATE_RELEASE="0"
 
 # Target whitelist
-TARGET_WHITELIST="$(jq -r -e '.build.targets | join(" ")' "$SCRIPT_DIR/build-info.json")"
+if [ -n "$WORKFLOW_DISPATCH_TARGETS" ]; then
+	# Get targets from dispatch event
+	TARGET_WHITELIST="$WORKFLOW_DISPATCH_TARGETS"
+else
+	# Get targets from build-info.json
+	TARGET_WHITELIST="$(jq -r -e '.build.targets | join(" ")' "$SCRIPT_DIR/build-info.json")"
+fi
 
 # Release Branch regex
 RELEASE_BRANCH_RE="^v20[0-9]{2}\.[0-9]\.x$"
