@@ -180,6 +180,14 @@ jobs:
           fetch-depth: 0
           fetch-tags: true
 
+      - name: Fetch upstream tags
+        # yamllint disable rule:line-length
+        if: ${{ needs.build-meta.outputs.gluon-repository != 'freifunk-gluon/gluon' }}
+        run: |
+          git -C gluon-gha-data/gluon remote add upstream https://github.com/freifunk-gluon/gluon.git
+          git -C gluon-gha-data/gluon fetch upstream --tags
+        # yamllint enable rule:line-length
+
       - name: Print CPU info
         run: cat /proc/cpuinfo
 
