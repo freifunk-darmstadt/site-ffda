@@ -284,12 +284,12 @@ jobs:
         uses: freifunk-gluon/action-build@v1
         if: ${{ needs.build-meta.outputs.manifest-beta != '0' }}
         with:
-          container-version: |
+          container-version: >-
             ${{ needs.build-meta.outputs.container-version }}
           gluon-path: "gluon-gha-data/gluon"
           make-target: manifest
           autoupdater-branch: beta
-          release: |
+          release: >-
             ${{ needs.build-meta.outputs.release-version }}
           priority: 1
 
