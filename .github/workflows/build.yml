@@ -24,6 +24,8 @@ jobs:
         ${{ steps.build-metadata.outputs.container-version }}
       release-version: >-
         ${{ steps.build-metadata.outputs.release-version }}
+      site-version: >-
+        ${{ steps.build-metadata.outputs.site-version }}
       autoupdater-enabled: >-
         ${{ steps.build-metadata.outputs.autoupdater-enabled }}
       autoupdater-branch: >-
