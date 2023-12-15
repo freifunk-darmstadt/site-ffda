@@ -121,7 +121,7 @@ elif [ "$GITHUB_EVENT_NAME" = "push"  ] && [ "$GITHUB_REF_TYPE" = "tag" ]; then
 	fi
 
 	CREATE_RELEASE="1"
-elif [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ]; then
+elif [ "$GITHUB_EVENT_NAME" = "workflow_dispatch" ] || [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
 	# Workflow Dispatch - autoupdater Branch is testing and disabled
 	AUTOUPDATER_ENABLED="0"
 	AUTOUPDATER_BRANCH="testing"
