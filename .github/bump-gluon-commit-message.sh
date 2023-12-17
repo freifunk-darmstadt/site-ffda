@@ -27,5 +27,7 @@ build-info: update Gluon to $new_commit_date
 
 Update Gluon from $old_commit_short to $new_commit_short.
 
+\`\`\`
 $commit_log
+\`\`\`
 EOF
