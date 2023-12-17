@@ -8,7 +8,33 @@ function usage() {
     exit 1
 }
 
-SCRIPT_DIR="$(dirname "$0")"
+function get_signature() {
+    local secret manifest upper
+
+    secret="$1"
+    manifest="$2"
+    upper="$(mktemp)"
+
+    trap 'rm -f "$upper"' EXIT
+
+    awk 'BEGIN    {
+        sep = 0
+    }
+
+    /^---$/ {
+        sep = 1;
+        next
+    }
+
+    {
+        if(sep == 0) {
+            print > "'"$upper"'"
+        }
+    }' "$manifest"
+
+    ecdsasign "$upper" < "$secret"
+    rm -f "$upper"
+}
 
 # This Script is used to sign a Firmware Release using
 # a private ECDSA key.
@@ -43,7 +69,7 @@ for manifest_path in "${TEMP_DIR}/"*.manifest; do
     manifest_branch_name="$(basename "$manifest_path" .manifest)"
 
     # Get Signature
-    signature="$("$SCRIPT_DIR/sign.sh" "$PRIVATE_KEY_PATH" "$manifest_path")"
+    signature="$(get_signature "$PRIVATE_KEY_PATH" "$manifest_path")"
 
     echo "Signature for $manifest_branch_name"
     echo "$signature"
