@@ -325,6 +325,32 @@ jobs:
           priority: 1
           broken: ${{ needs.build-meta.outputs.broken }}
 
+      - name: Sign manifest (Stable)
+        uses: freifunk-gluon/action-sign@v1
+        if: >
+          needs.build-meta.outputs.manifest-stable != '0' &&
+          needs.build-meta.outputs.sign-manifest != '0'
+        with:
+          container-version: ${{ needs.build-meta.outputs.container-version }}
+          gluon-path: "gluon-gha-data/gluon"
+          manifest: >-
+            gluon-gha-data/gluon/output/images/sysupgrade/stable.manifest
+          signing-key: ${{ secrets.GHA_FFDA_BUILD_ECDSA_KEY_STABLE }}
+          write-signature: "true"
+
+      - name: Sign manifest (Beta)
+        uses: freifunk-gluon/action-sign@v1
+        if: >
+          needs.build-meta.outputs.manifest-beta != '0' &&
+          needs.build-meta.outputs.sign-manifest != '0'
+        with:
+          container-version: ${{ needs.build-meta.outputs.container-version }}
+          gluon-path: "gluon-gha-data/gluon"
+          manifest: >-
+            gluon-gha-data/gluon/output/images/sysupgrade/beta.manifest
+          signing-key: ${{ secrets.GHA_FFDA_BUILD_ECDSA_KEY_BETA }}
+          write-signature: "true"
+
       - name: Sign manifest (Testing)
         uses: freifunk-gluon/action-sign@v1
         if: >
