@@ -35,6 +35,7 @@ if not device_class('tiny') then
 
 	features({
 		'mesh-vpn-sqm',
+		'tls',
 		'web-cellular',
 		'wireless-encryption-wpa3'
 	})
