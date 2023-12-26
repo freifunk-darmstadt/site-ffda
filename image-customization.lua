@@ -49,6 +49,8 @@ local pkgs_usb_hid = {
 
 local pkgs_usb_serial = {
 	'kmod-usb-serial',
+	'kmod-usb-serial-ch341',
+	'kmod-usb-serial-cp210x',
 	'kmod-usb-serial-ftdi',
 	'kmod-usb-serial-pl2303'
 }
