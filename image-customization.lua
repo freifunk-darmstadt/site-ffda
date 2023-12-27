@@ -20,9 +20,7 @@ features({
 })
 
 packages({
-	'ca-bundle',
 	'iwinfo',
-	'libustream-mbedtls',
 	'respondd-module-airtime',
 	'ffda-update-stabilizer',
 })
