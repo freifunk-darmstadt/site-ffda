@@ -162,3 +162,8 @@ if target('x86') then
 	packages(pkgs_usb_serial)
 	packages(pkgs_usb_storage)
 end
+
+-- Network-activated setup-mode for NWA55AXE
+if device({'zyxel-nwa55axe'}) then
+	packages({'ffda-network-setup-mode'})
+end
