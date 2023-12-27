@@ -7,6 +7,9 @@ SCRIPT_DIR="$(dirname "$0")"
 # Get Git short hash for repo at $SCRIPT_DIR
 GIT_SHORT_HASH="$(git -C "$SCRIPT_DIR" rev-parse --short HEAD)"
 
+# Get date of last Git commit for repo at $SCRIPT_DIR
+GIT_COMMIT_DATE="$(git -C "$SCRIPT_DIR" log -1 --format=%cd --date=format:'%Y%m%d')"
+
 # Build BROKEN by default. Disable for release builds.
 BROKEN="1"
 
@@ -51,6 +54,10 @@ CONTAINER_VERSION="$(jq -r -e .container.version "$SCRIPT_DIR/build-info.json")"
 # Get Default Release version from site.mk
 DEFAULT_RELEASE_VERSION="$(make --no-print-directory -C "$SCRIPT_DIR/.." -f ci-build.mk version)"
 DEFAULT_RELEASE_VERSION="$DEFAULT_RELEASE_VERSION-$GIT_SHORT_HASH"
+
+# Create site-version from site.mk
+SITE_VERSION="$(make --no-print-directory -C "$SCRIPT_DIR/.." -f ci-build.mk site-version)"
+SITE_VERSION="$SITE_VERSION-ffda-$GIT_COMMIT_DATE-$GIT_SHORT_HASH"
 
 # Enable Manifest generation conditionally
 MANIFEST_STABLE="0"
@@ -151,6 +158,7 @@ echo "build-meta-output=$BUILD_META_TMP_DIR" >> "$BUILD_META_OUTPUT"
 echo "container-version=$CONTAINER_VERSION" >> "$BUILD_META_OUTPUT"
 echo "gluon-repository=$GLUON_REPOSITORY" >> "$BUILD_META_OUTPUT"
 echo "gluon-commit=$GLUON_COMMIT" >> "$BUILD_META_OUTPUT"
+echo "site-version=$SITE_VERSION" >> "$BUILD_META_OUTPUT"
 echo "release-version=$RELEASE_VERSION" >> "$BUILD_META_OUTPUT"
 echo "autoupdater-enabled=$AUTOUPDATER_ENABLED" >> "$BUILD_META_OUTPUT"
 echo "autoupdater-branch=$AUTOUPDATER_BRANCH" >> "$BUILD_META_OUTPUT"

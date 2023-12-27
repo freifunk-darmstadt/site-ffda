@@ -1,4 +1,6 @@
-DEFAULT_GLUON_RELEASE := 2.7~$(shell date '+%Y%m%d')
+FFDA_SITE_VERSION := 2.7
+
+DEFAULT_GLUON_RELEASE := $(FFDA_SITE_VERSION)~$(shell date '+%Y%m%d')
 DEFAULT_GLUON_PRIORITY := 0
 
 # Enable multidomain support

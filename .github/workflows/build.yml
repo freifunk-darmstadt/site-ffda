@@ -24,6 +24,8 @@ jobs:
         ${{ steps.build-metadata.outputs.container-version }}
       release-version: >-
         ${{ steps.build-metadata.outputs.release-version }}
+      site-version: >-
+        ${{ steps.build-metadata.outputs.site-version }}
       autoupdater-enabled: >-
         ${{ steps.build-metadata.outputs.autoupdater-enabled }}
       autoupdater-branch: >-
@@ -216,7 +218,8 @@ jobs:
           make-target: update
 
       - name: Build
-        uses: freifunk-gluon/action-build@v1
+        # yamllint disable-line rule:line-length
+        uses: freifunk-gluon/action-build@3a48a4d0db08ff393e08ec3074f1b218ee5ac54b
         id: build-gluon
         with:
           container-version: ${{ needs.build-meta.outputs.container-version }}
@@ -229,6 +232,7 @@ jobs:
           autoupdater-branch: |
             ${{ needs.build-meta.outputs.autoupdater-branch }}
           release: ${{ needs.build-meta.outputs.release-version }}
+          site-version: ${{ needs.build-meta.outputs.site-version }}
 
       - name: Pack and Upload build output
         uses: ./.github/actions/build-artifact
