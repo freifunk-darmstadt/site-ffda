@@ -32,6 +32,19 @@ jobs:
       - name: Validate Shell Scripts
         run: shellcheck $SHELL_FILES
 
+  image-customization:
+    name: "Image-Customization"
+    runs-on: ubuntu-22.04
+    env:
+      LUA_FILES: >-
+        image-customization.lua
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Dependencies
+        run: sudo apt-get -y update && sudo apt-get -y install lua-check
+      - name: Lint Image-Customization
+        run: luacheck --config contrib/site-luacheckrc $LUA_FILES
+
   json:
     name: "JSON"
     runs-on: ubuntu-22.04
