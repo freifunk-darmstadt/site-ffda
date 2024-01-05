@@ -64,7 +64,7 @@ jobs:
         run: bash .github/build-meta.sh
 
       - name: Create Artifact of build-meta
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: build-meta
           path: ${{ steps.build-metadata.outputs.build-meta-output }}
@@ -158,7 +158,7 @@ jobs:
           --posix -C "gluon-gha-data/gluon" openwrt
 
       - name: Archive build output
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: openwrt
           path: "gluon-gha-data/openwrt"
@@ -199,7 +199,7 @@ jobs:
         run: cat /proc/meminfo
 
       - name: Download prepared OpenWrt
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: openwrt
           path: "gluon-gha-data/openwrt"
@@ -250,7 +250,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           path: "gluon-gha-data/gluon-output"
 
@@ -262,7 +262,7 @@ jobs:
           path: 'gluon-gha-data/gluon'
 
       - name: Download prepared OpenWrt
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: openwrt
           path: "gluon-gha-data/openwrt"
@@ -349,7 +349,7 @@ jobs:
           -C gluon-gha-data/gluon/output/images/sysupgrade -T -
 
       - name: Archive output
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: manifest-signed
           path: gluon-gha-data/artifact-out
@@ -365,7 +365,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           path: "gluon-gha-data/artifact-download"
 
@@ -413,7 +413,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           path: "gluon-gha-data/artifact-download"
 
