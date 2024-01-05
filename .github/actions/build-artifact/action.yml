@@ -18,5 +18,6 @@ runs:
       with:
         name: ${{ inputs.hardware-target }}
         path: build-artifact-workdir
+        compression-level: 0
     - run: rm -rf "$GITHUB_WORKSPACE/build-artifact-workdir"
       shell: bash

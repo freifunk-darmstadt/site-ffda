@@ -162,6 +162,7 @@ jobs:
         with:
           name: openwrt
           path: "gluon-gha-data/openwrt"
+          compression-level: 0
 
 
   build:
