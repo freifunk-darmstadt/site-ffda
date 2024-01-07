@@ -9,7 +9,7 @@ Gluon site configuration to build firmware for Darmstadt.
     * basis for the next release
     * firmware version: 3.1.x
 * `v2023.2.x`
-    * matches Gluon `v2023.1.x` branch
+    * matches Gluon `v2023.2.x` branch
     * firmware version: 3.0.x
 * `v2022.1.x`
     * matches Gluon `v2022.1.x` branch
