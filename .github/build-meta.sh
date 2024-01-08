@@ -19,6 +19,9 @@ DEPLOY="0"
 # Don't release by default. Enable for tags.
 CREATE_RELEASE="0"
 
+# Don't link release by default. Enable for testing.
+LINK_RELEASE="0"
+
 # Target whitelist
 if [ -n "$WORKFLOW_DISPATCH_TARGETS" ]; then
 	# Get targets from dispatch event
@@ -101,6 +104,7 @@ elif [ "$GITHUB_EVENT_NAME" = "push"  ] && [ "$GITHUB_REF_TYPE" = "tag" ]; then
 
 		RELEASE_VERSION="$(echo "$GITHUB_REF_NAME" | tr '-' '~')"
 		DEPLOY="1"
+		LINK_RELEASE="1"
 	elif [[ "$GITHUB_REF_NAME" =~ $RELEASE_TAG_RE ]]; then
 		# Stable release - autoupdater Branch is stable and enabled
 		AUTOUPDATER_ENABLED="1"
@@ -168,6 +172,7 @@ echo "manifest-beta=$MANIFEST_BETA" >> "$BUILD_META_OUTPUT"
 echo "manifest-testing=$MANIFEST_TESTING" >> "$BUILD_META_OUTPUT"
 echo "sign-manifest=$SIGN_MANIFEST" >> "$BUILD_META_OUTPUT"
 echo "deploy=$DEPLOY" >> "$BUILD_META_OUTPUT"
+echo "link-release=$LINK_RELEASE" >> "$BUILD_META_OUTPUT"
 echo "create-release=$CREATE_RELEASE" >> "$BUILD_META_OUTPUT"
 echo "target-whitelist=$TARGET_WHITELIST" >> "$BUILD_META_OUTPUT"
 
