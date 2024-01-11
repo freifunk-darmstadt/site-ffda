@@ -87,7 +87,7 @@ jobs:
           commit_user_name: ${{ env.COMMIT_NAME }}
           commit_user_email: ${{ env.COMMIT_EMAIL }}
           commit_author: ${{ env.COMMIT_NAME }} <${{ env.COMMIT_EMAIL }}>
-          branch: bump-gluon-${{ steps.head-hash.outputs.short-hash }}
+          branch: bump-gluon-${{ github.event.inputs.site-branch }}-${{ steps.head-hash.outputs.short-hash }}
           create_branch: true
 
       - name: Create pull request
@@ -95,7 +95,7 @@ jobs:
         run: >-
           gh pr create
           -B ${{ github.event.inputs.site-branch }}
-          -H bump-gluon-${{ steps.head-hash.outputs.short-hash }}
+          -H bump-gluon-${{ github.event.inputs.site-branch }}-${{ steps.head-hash.outputs.short-hash }}
           --fill
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -103,4 +103,4 @@ jobs:
       - name: Emit PR creation message
         if: steps.head-hash.outputs.hash != steps.build-info-hash.outputs.hash && github.event.inputs.skip-pull-request == 'true'
         run:
-          echo "::notice::Create pull-request at https://github.com/${{ github.repository }}/compare/${{ github.event.inputs.site-branch }}...bump-gluon-${{ steps.head-hash.outputs.short-hash }}?quick_pull=1"
+          echo "::notice::Create pull-request at https://github.com/${{ github.repository }}/compare/${{ github.event.inputs.site-branch }}...bump-gluon-${{ github.event.inputs.site-branch }}-${{ steps.head-hash.outputs.short-hash }}?quick_pull=1"
