@@ -22,7 +22,6 @@ features({
 packages({
 	'iwinfo',
 	'respondd-module-airtime',
-	'ffda-update-stabilizer',
 })
 
 -- Packages and features for devices which are not flagged as tiny
