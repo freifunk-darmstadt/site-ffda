@@ -450,7 +450,11 @@ jobs:
           AUTOUPDATER_BRANCH: ${{ needs.build-meta.outputs.autoupdater-branch }}
         # yamllint disable rule:line-length
         run: >
-          ssh -i ~/git/freifunk/ci-key/id_ci
+          ssh
+          -i ~/.ssh/deploy_key
+          -q
+          -oUserKnownHostsFile=/dev/null
+          -oStrictHostKeyChecking=no
           -oIdentitiesOnly=yes
           firmware@www1.darmstadt.freifunk.net
           "ln -n -f -s /srv/firmware/images/$RELEASE_VERSION /srv/firmware/images/$AUTOUPDATER_BRANCH"
