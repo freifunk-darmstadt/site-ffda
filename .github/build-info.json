@@ -5,7 +5,7 @@
         "commit": "19c2441e9bf25b2407c8cebbcce7ca8fe1012c35"
     },
     "container": {
-        "version": "master"
+        "version": "v2023.2.1"
     },
     "build": {
         "targets": [
