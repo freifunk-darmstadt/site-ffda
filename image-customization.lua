@@ -22,6 +22,7 @@ features({
 packages({
 	'iwinfo',
 	'respondd-module-airtime',
+	'ffda-ssh-manager',
 })
 
 -- Packages and features for devices which are not flagged as tiny
