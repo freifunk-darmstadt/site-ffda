@@ -1,6 +1,6 @@
 std = {
 	read_globals = {
-		"features", 
+		"features",
 		"packages",
 		"broken",
 		"disable",

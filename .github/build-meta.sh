@@ -124,7 +124,7 @@ elif [ "$GITHUB_EVENT_NAME" = "push"  ] && [ "$GITHUB_REF_TYPE" = "tag" ]; then
 
 		if [[ "$GITHUB_REF_NAME" =~ $CUSTOM_TESTING_TAG_RE ]]; then
 			# Custom testing tag
-			
+
 			# Replace first occurence of - with ~ of GITHUB_REF_NAME for RELEASE_VERSION
 			# shellcheck disable=SC2001
 			RELEASE_VERSION="$(echo "$GITHUB_REF_NAME" | sed 's/-/~/')"
