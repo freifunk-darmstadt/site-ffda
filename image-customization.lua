@@ -23,6 +23,7 @@ packages({
 	'iwinfo',
 	'respondd-module-airtime',
 	'ffda-ssh-manager',
+	'ffda-node-whisperer',
 })
 
 -- Packages and features for devices which are not flagged as tiny
