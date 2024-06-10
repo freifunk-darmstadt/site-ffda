@@ -60,6 +60,9 @@ jobs:
     name: Determine build-meta
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-tags: true
+          fetch-depth: 0
 
       - name: Get build-metadata
         id: build-metadata
