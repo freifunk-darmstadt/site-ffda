@@ -1,4 +1,4 @@
-FFDA_SITE_VERSION := 3.0.3
+FFDA_SITE_VERSION := $(shell git describe --tags --abbrev=0 | sed 's/-.*//')
 
 DEFAULT_GLUON_RELEASE := $(FFDA_SITE_VERSION)~$(shell date '+%Y%m%d')
 DEFAULT_GLUON_PRIORITY := 0
