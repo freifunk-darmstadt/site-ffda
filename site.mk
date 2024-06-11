@@ -1,4 +1,5 @@
-FFDA_SITE_VERSION := $(shell git describe --tags --abbrev=0 | sed 's/-.*//')
+FFDA_SITE_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
+FFDA_SITE_VERSION := $(shell git -C $(FFDA_SITE_DIR) describe --tags --abbrev=0 | sed 's/-.*//')
 
 DEFAULT_GLUON_RELEASE := $(FFDA_SITE_VERSION)~$(shell date '+%Y%m%d')
 DEFAULT_GLUON_PRIORITY := 0
