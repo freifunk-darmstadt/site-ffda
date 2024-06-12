@@ -70,6 +70,14 @@ jobs:
       - name: Show current Timezone settings
         run: timedatectl status
 
+      - name: Fetch upstream tags
+        # yamllint disable rule:line-length
+        if: ${{ github.repository != 'freifunk-darmstadt/site-ffda' }}
+        run: |
+          git remote add upstream https://github.com/freifunk-darmstadt/site-ffda.git
+          git fetch upstream --tags
+        # yamllint enable rule:line-length
+
       - name: Get build-metadata
         id: build-metadata
         run: bash .github/build-meta.sh
