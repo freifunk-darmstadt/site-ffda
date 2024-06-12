@@ -64,6 +64,12 @@ jobs:
           fetch-tags: true
           fetch-depth: 0
 
+      - name: Set Timezone
+        run: sudo timedatectl set-timezone Europe/Berlin
+
+      - name: Show current Timezone settings
+        run: timedatectl status
+
       - name: Fetch upstream tags
         # yamllint disable rule:line-length
         if: ${{ github.repository != 'freifunk-darmstadt/site-ffda' }}
