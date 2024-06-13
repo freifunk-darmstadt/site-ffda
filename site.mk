@@ -1,5 +1,8 @@
 FFDA_SITE_DIR:=$(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-FFDA_SITE_VERSION := $(shell git -C $(FFDA_SITE_DIR) describe --tags --abbrev=0 | sed 's/-.*//')
+FFDA_SITE_VERSION_GIT := $(shell git -C $(FFDA_SITE_DIR) describe --tags --abbrev=0 | sed 's/-.*//')
+
+FFDA_SITE_VERSION_FALLBACK := 3.1
+FFDA_SITE_VERSION := $(if $(FFDA_SITE_VERSION_GIT),$(FFDA_SITE_VERSION_GIT),$(FFDA_SITE_VERSION_FALLBACK))
 
 DEFAULT_GLUON_RELEASE := $(FFDA_SITE_VERSION)~$(shell date '+%Y%m%d')
 DEFAULT_GLUON_PRIORITY := 0
