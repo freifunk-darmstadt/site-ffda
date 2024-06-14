@@ -5,7 +5,7 @@ Gluon site configuration to build firmware for Darmstadt.
 ### Branches
 
 * `master`:
-    * matches Gluons `master` branch
+    * matches Gluons `main` branch
     * basis for the next release
     * firmware version: 3.1.x
 * `v2023.2.x`
