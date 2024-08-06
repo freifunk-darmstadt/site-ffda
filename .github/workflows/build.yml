@@ -46,6 +46,8 @@ jobs:
         ${{ steps.build-metadata.outputs.sign-manifest }}
       create-release: >-
         ${{ steps.build-metadata.outputs.create-release }}
+      latest-release: >-
+        ${{ steps.build-metadata.outputs.latest-release }}
       deploy: >-
         ${{ steps.build-metadata.outputs.deploy }}
       target-whitelist: >-
@@ -514,5 +516,6 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           body_path: gluon-gha-data/release-notes.md
+          make_latest: ${{ needs.build-meta.outputs.latest-release == '1' }}
           files: |
             gluon-gha-data/release-artifacts/*
