@@ -18,7 +18,18 @@ on:
         required: false
 
 jobs:
+  validate-overrides:
+    runs-on: ubuntu-22.04
+    name: Validate CI overrides
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Validate overrides
+        run: |
+          bash .github/validate-overrides.sh
+
   build-meta:
+    needs: validate-overrides
     outputs:
       container-version: >-
         ${{ steps.build-metadata.outputs.container-version }}
