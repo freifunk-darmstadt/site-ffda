@@ -4,6 +4,22 @@ set -euxo pipefail
 
 SCRIPT_DIR="$(dirname "$0")"
 
+OVERRIDES_DIR="$SCRIPT_DIR/overrides/build-meta"
+
+function set_output_value() {
+	local output_file="$1"
+	local name="$2"
+	local value="$3"
+
+	# Check if override is defined
+	if [ -f "$OVERRIDES_DIR/$name" ]; then
+		value="$(cat "$OVERRIDES_DIR/$name")"
+		echo "::notice::Overriding $name with value \"$value\""
+	fi
+
+	echo "$name=$value" >> "$output_file"
+}
+
 # Get Git short hash for repo at $SCRIPT_DIR
 GIT_SHORT_HASH="$(git -C "$SCRIPT_DIR" rev-parse --short HEAD)"
 
@@ -169,23 +185,23 @@ BUILD_META_OUTPUT="$BUILD_META_TMP_DIR/build-meta.txt"
 
 # shellcheck disable=SC2129
 # Not the nicest way to do this, but it works.
-echo "build-meta-output=$BUILD_META_TMP_DIR" >> "$BUILD_META_OUTPUT"
-echo "container-version=$CONTAINER_VERSION" >> "$BUILD_META_OUTPUT"
-echo "gluon-repository=$GLUON_REPOSITORY" >> "$BUILD_META_OUTPUT"
-echo "gluon-commit=$GLUON_COMMIT" >> "$BUILD_META_OUTPUT"
-echo "site-version=$SITE_VERSION" >> "$BUILD_META_OUTPUT"
-echo "release-version=$RELEASE_VERSION" >> "$BUILD_META_OUTPUT"
-echo "autoupdater-enabled=$AUTOUPDATER_ENABLED" >> "$BUILD_META_OUTPUT"
-echo "autoupdater-branch=$AUTOUPDATER_BRANCH" >> "$BUILD_META_OUTPUT"
-echo "broken=$BROKEN" >> "$BUILD_META_OUTPUT"
-echo "manifest-stable=$MANIFEST_STABLE" >> "$BUILD_META_OUTPUT"
-echo "manifest-beta=$MANIFEST_BETA" >> "$BUILD_META_OUTPUT"
-echo "manifest-testing=$MANIFEST_TESTING" >> "$BUILD_META_OUTPUT"
-echo "sign-manifest=$SIGN_MANIFEST" >> "$BUILD_META_OUTPUT"
-echo "deploy=$DEPLOY" >> "$BUILD_META_OUTPUT"
-echo "create-release=$CREATE_RELEASE" >> "$BUILD_META_OUTPUT"
-echo "latest-release=$LATEST_RELEASE" >> "$BUILD_META_OUTPUT"
-echo "target-whitelist=$TARGET_WHITELIST" >> "$BUILD_META_OUTPUT"
+set_output_value "$BUILD_META_OUTPUT" "build-meta-output" "$BUILD_META_TMP_DIR"
+set_output_value "$BUILD_META_OUTPUT" "container-version" "$CONTAINER_VERSION"
+set_output_value "$BUILD_META_OUTPUT" "gluon-repository" "$GLUON_REPOSITORY"
+set_output_value "$BUILD_META_OUTPUT" "gluon-commit" "$GLUON_COMMIT"
+set_output_value "$BUILD_META_OUTPUT" "site-version" "$SITE_VERSION"
+set_output_value "$BUILD_META_OUTPUT" "release-version" "$RELEASE_VERSION"
+set_output_value "$BUILD_META_OUTPUT" "autoupdater-enabled" "$AUTOUPDATER_ENABLED"
+set_output_value "$BUILD_META_OUTPUT" "autoupdater-branch" "$AUTOUPDATER_BRANCH"
+set_output_value "$BUILD_META_OUTPUT" "broken" "$BROKEN"
+set_output_value "$BUILD_META_OUTPUT" "manifest-stable" "$MANIFEST_STABLE"
+set_output_value "$BUILD_META_OUTPUT" "manifest-beta" "$MANIFEST_BETA"
+set_output_value "$BUILD_META_OUTPUT" "manifest-testing" "$MANIFEST_TESTING"
+set_output_value "$BUILD_META_OUTPUT" "sign-manifest" "$SIGN_MANIFEST"
+set_output_value "$BUILD_META_OUTPUT" "deploy" "$DEPLOY"
+set_output_value "$BUILD_META_OUTPUT" "create-release" "$CREATE_RELEASE"
+set_output_value "$BUILD_META_OUTPUT" "latest-release" "$LATEST_RELEASE"
+set_output_value "$BUILD_META_OUTPUT" "target-whitelist" "$TARGET_WHITELIST"
 
 # Copy over to GITHUB_OUTPUT
 cat "$BUILD_META_OUTPUT" >> "$GITHUB_OUTPUT"
