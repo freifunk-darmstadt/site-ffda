@@ -18,7 +18,18 @@ on:
         required: false
 
 jobs:
+  validate-overrides:
+    runs-on: ubuntu-22.04
+    name: Validate CI overrides
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Validate overrides
+        run: |
+          bash .github/validate-overrides.sh
+
   build-meta:
+    needs: validate-overrides
     outputs:
       container-version: >-
         ${{ steps.build-metadata.outputs.container-version }}
@@ -46,6 +57,8 @@ jobs:
         ${{ steps.build-metadata.outputs.sign-manifest }}
       create-release: >-
         ${{ steps.build-metadata.outputs.create-release }}
+      latest-release: >-
+        ${{ steps.build-metadata.outputs.latest-release }}
       deploy: >-
         ${{ steps.build-metadata.outputs.deploy }}
       target-whitelist: >-
@@ -511,8 +524,9 @@ jobs:
             gluon-gha-data/release-artifacts/*
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         with:
           body_path: gluon-gha-data/release-notes.md
+          make_latest: ${{ needs.build-meta.outputs.latest-release == '1' }}
           files: |
             gluon-gha-data/release-artifacts/*
