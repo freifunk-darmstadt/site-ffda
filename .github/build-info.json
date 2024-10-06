@@ -2,7 +2,7 @@
     "gluon": {
         "repository": "freifunk-gluon/gluon",
         "branch": "main",
-        "commit": "52a15803d2004a2c7439bfde3e3289d384dc9112"
+        "commit": "61ec97e84c617a35cb28ac9613fadc1632b3c64b"
     },
     "container": {
         "version": "main"
