@@ -57,10 +57,6 @@ RELEASE_BRANCH_RE="^v20[0-9]{2}\.[0-9]\.x$"
 TESTING_TAG_RE="^[2-9].[0-9]-[0-9]{8}$"
 # Regex for custom testing firmware tag
 CUSTOM_TESTING_TAG_RE="^[2-9].[0-9]-[0-9]{8}"
-# Regex for unstable firmware tag
-UNSTABLE_TAG_RE="^[2-9].[0-9]u-[0-9]{8}$"
-# Regex for custom unstable firmware tag
-CUSTOM_UNSTABLE_TAG_RE="^[2-9].[0-9]u-[0-9]{8}"
 # Regex for release firmware tag
 RELEASE_TAG_RE="^[2-9].[0-9].[0-9]$"
 # Regex for release deployment firmware tag
@@ -92,7 +88,6 @@ SITE_VERSION="$SITE_VERSION-ffda-$GIT_COMMIT_DATE-$GIT_SHORT_HASH"
 MANIFEST_STABLE="0"
 MANIFEST_BETA="0"
 MANIFEST_TESTING="0"
-MANIFEST_UNSTABLE="0"
 
 # Only Sign manifest on release builds
 SIGN_MANIFEST="0"
@@ -108,12 +103,6 @@ if [ "$GITHUB_EVENT_NAME" = "push"  ] && [ "$GITHUB_REF_TYPE" = "branch" ]; then
 		AUTOUPDATER_BRANCH="testing"
 
 		MANIFEST_TESTING="1"
-	elif [ "$GITHUB_REF_NAME" = "unstable" ]; then
-		# Push to unstable - autoupdater Branch is unstable and enabled
-		AUTOUPDATER_ENABLED="1"
-		AUTOUPDATER_BRANCH="unstable"
-
-		MANIFEST_UNSTABLE="1"
 	elif [[ "$GITHUB_REF_NAME" =~ $RELEASE_BRANCH_RE ]]; then
 		# Push to release branch - autoupdater Branch is stable and enabled
 		AUTOUPDATER_ENABLED="1"
@@ -133,17 +122,6 @@ elif [ "$GITHUB_EVENT_NAME" = "push"  ] && [ "$GITHUB_REF_TYPE" = "tag" ]; then
 		AUTOUPDATER_BRANCH="testing"
 
 		MANIFEST_TESTING="1"
-		SIGN_MANIFEST="1"
-
-		RELEASE_VERSION="$(echo "$GITHUB_REF_NAME" | tr '-' '~')"
-		DEPLOY="1"
-		LINK_RELEASE="1"
-	elif [[ "$GITHUB_REF_NAME" =~ $UNSTABLE_TAG_RE ]]; then
-		# unstable release - autoupdater Branch is unstable and enabled
-		AUTOUPDATER_ENABLED="1"
-		AUTOUPDATER_BRANCH="unstable"
-
-		MANIFEST_UNSTABLE="1"
 		SIGN_MANIFEST="1"
 
 		RELEASE_VERSION="$(echo "$GITHUB_REF_NAME" | tr '-' '~')"
@@ -182,15 +160,7 @@ elif [ "$GITHUB_EVENT_NAME" = "push"  ] && [ "$GITHUB_REF_TYPE" = "tag" ]; then
 			# Replace first occurence of - with ~ of GITHUB_REF_NAME for RELEASE_VERSION
 			# shellcheck disable=SC2001
 			RELEASE_VERSION="$(echo "$GITHUB_REF_NAME" | sed 's/-/~/')"
-		elif [[ "$GITHUB_REF_NAME" =~ $CUSTOM_UNSTABLE_TAG_RE ]]; then
-			AUTOUPDATER_BRANCH="unstable"
-			# Custom unstable tag
-
-			# Replace first occurence of - with ~ of GITHUB_REF_NAME for RELEASE_VERSION
-			# shellcheck disable=SC2001
-			RELEASE_VERSION="$(echo "$GITHUB_REF_NAME" | sed 's/-/~/')"
 		fi
-
 	fi
 
 	CREATE_RELEASE="1"
@@ -247,7 +217,6 @@ set_output_value "$BUILD_META_OUTPUT" "broken" "$BROKEN"
 set_output_value "$BUILD_META_OUTPUT" "manifest-stable" "$MANIFEST_STABLE"
 set_output_value "$BUILD_META_OUTPUT" "manifest-beta" "$MANIFEST_BETA"
 set_output_value "$BUILD_META_OUTPUT" "manifest-testing" "$MANIFEST_TESTING"
-set_output_value "$BUILD_META_OUTPUT" "manifest-unstable" "$MANIFEST_UNSTABLE"
 set_output_value "$BUILD_META_OUTPUT" "sign-manifest" "$SIGN_MANIFEST"
 set_output_value "$BUILD_META_OUTPUT" "deploy" "$DEPLOY"
 set_output_value "$BUILD_META_OUTPUT" "link-release" "$LINK_RELEASE"
