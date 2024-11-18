@@ -1,11 +1,11 @@
 {
     "gluon": {
         "repository": "freifunk-gluon/gluon",
-        "branch": "main",
-        "commit": "61ec97e84c617a35cb28ac9613fadc1632b3c64b"
+        "branch": "openwrt-24.10",
+        "commit": "1bbea11e51a633c8fe45879a2aa7de0107ec7eb5"
     },
     "container": {
-        "version": "main"
+        "version": "next"
     },
     "build": {
         "targets": [
