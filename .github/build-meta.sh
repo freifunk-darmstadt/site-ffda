@@ -146,7 +146,8 @@ elif [ "$GITHUB_EVENT_NAME" = "push"  ] && [ "$GITHUB_REF_TYPE" = "tag" ]; then
 		AUTOUPDATER_ENABLED="1"
 		AUTOUPDATER_BRANCH="stable"
 
-		RELEASE_VERSION="$GITHUB_REF_NAME"
+		# shellcheck disable=SC2001
+		RELEASE_VERSION="$(echo "$GITHUB_REF_NAME" | sed 's/-/~/')"
 		BROKEN="1"
 		DEPLOY="0"
 	else
