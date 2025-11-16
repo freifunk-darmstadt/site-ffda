@@ -144,6 +144,16 @@ jobs:
           ref: ${{ needs.build-meta.outputs.gluon-commit }}
           path: 'gluon-gha-data/gluon'
 
+      - name: Set Git config
+        run: |
+          git config --global user.name "Site CI"
+          git config --global user.email "site-ci@darmstadt.freifunk.net"
+
+      - name: Apply Site-Patches
+        run: >
+          bash .github/apply-site-patches.sh
+          gluon-gha-data/gluon patches/gluon
+
       - name: Determine Cache-Key
         id: cache-key
         run: >
@@ -225,6 +235,16 @@ jobs:
           path: 'gluon-gha-data/gluon'
           fetch-depth: 0
           fetch-tags: true
+
+      - name: Set Git config
+        run: |
+          git config --global user.name "Site CI"
+          git config --global user.email "site-ci@darmstadt.freifunk.net"
+
+      - name: Apply Site-Patches
+        run: >
+          bash .github/apply-site-patches.sh
+          gluon-gha-data/gluon patches/gluon
 
       - name: Fetch upstream tags
         # yamllint disable rule:line-length
