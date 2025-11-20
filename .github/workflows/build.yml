@@ -490,15 +490,23 @@ jobs:
           echo "${{ secrets.GHA_FFDA_BUILD_DEPLOY_SSH_KEY }}" >
           ~/.ssh/deploy_key && chmod 600 ~/.ssh/deploy_key
 
-      - name: Deploy Images
+      - name: Deploy Images on www1
         # yamllint disable-line rule:line-length
         run: rsync -avzP -e "ssh -q -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i ~/.ssh/deploy_key -oIdentitiesOnly=yes" gluon-gha-data/gluon-output/output/images/{factory,sysupgrade,other} "firmware@www1.darmstadt.freifunk.net:/srv/firmware/images/${{ needs.build-meta.outputs.release-version }}/"
 
-      - name: Deploy Packages
+      - name: Deploy Packages on www1
         # ToDo: Remove 'ffda' site-code and move to build-meta
         # yamllint disable-line rule:line-length
         run: rsync -avzP -e "ssh -q -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i ~/.ssh/deploy_key -oIdentitiesOnly=yes" "gluon-gha-data/gluon-output/output/packages/gluon-ffda-${{ needs.build-meta.outputs.release-version }}" "firmware@www1.darmstadt.freifunk.net:/srv/firmware/modules/"
 
+      - name: Deploy Images on www3
+        # yamllint disable-line rule:line-length
+        run: rsync -avzP -e "ssh -q -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i ~/.ssh/deploy_key -oIdentitiesOnly=yes" gluon-gha-data/gluon-output/output/images/{factory,sysupgrade,other} "ffda_firmware@www3.darmstadt.freifunk.net:/srv/firmware/images/${{ needs.build-meta.outputs.release-version }}/"
+
+      - name: Deploy Packages on www3
+        # ToDo: Remove 'ffda' site-code and move to build-meta
+        # yamllint disable-line rule:line-length
+        run: rsync -avzP -e "ssh -q -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no -i ~/.ssh/deploy_key -oIdentitiesOnly=yes" "gluon-gha-data/gluon-output/output/packages/gluon-ffda-${{ needs.build-meta.outputs.release-version }}" "ffda_firmware@www3.darmstadt.freifunk.net:/srv/firmware/modules/"
 
   link-release:
     needs: [build, build-meta, targets, manifest, deploy]
