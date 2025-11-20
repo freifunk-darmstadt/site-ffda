@@ -74,8 +74,9 @@ jobs:
         if: steps.head-hash.outputs.hash != steps.build-info-hash.outputs.hash
         id: commit-message
         run: |
+          REPO=$(jq -r '.gluon.repository' $BUILD_INFO)
           echo "msg<<EOF" >> "$GITHUB_OUTPUT"
-          ./.github/bump-gluon-commit-message.sh $GLUON_CHECKOUT_DIR ${{ steps.build-info-hash.outputs.hash }} ${{ steps.head-hash.outputs.hash }} >> "$GITHUB_OUTPUT"
+          ./.github/bump-gluon-commit-message.sh $GLUON_CHECKOUT_DIR "$REPO" ${{ steps.build-info-hash.outputs.hash }} ${{ steps.head-hash.outputs.hash }} >> "$GITHUB_OUTPUT"
           echo "EOF" >> "$GITHUB_OUTPUT"
 
       - name: Commit and push changes
