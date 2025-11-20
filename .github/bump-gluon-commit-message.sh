@@ -3,8 +3,9 @@
 set -e
 
 repo_path="$1"
-old_commit="$2"
-new_commit="$3"
+github_path="$2"
+old_commit="$3"
+new_commit="$4"
 
 # Check if all arguments are set, print usage otherwise
 if [ -z "$repo_path" ] || [ -z "$old_commit" ] || [ -z "$new_commit" ]; then
@@ -19,15 +20,10 @@ new_commit_short="$(git -C "$repo_path" rev-parse --short "$new_commit")"
 # Get commit date of new commit (YYYY-MM-DD)
 new_commit_date="$(git -C "$repo_path" show -s --format=%cd --date=short "$new_commit")"
 
-# Get Git log of commit delta
-commit_log="$(git -C "$repo_path" log --oneline --no-decorate "$old_commit".."$new_commit")"
-
 cat <<EOF
 build-info: update Gluon to $new_commit_date
 
 Update Gluon from $old_commit_short to $new_commit_short.
 
-~~~
-$commit_log
-~~~
+https://github.com/${github_path}/compare/$old_commit_short...$new_commit_short
 EOF
