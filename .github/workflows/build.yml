@@ -522,7 +522,7 @@ jobs:
           mkdir -p ~/.ssh &&
           echo "${{ secrets.GHA_FFDA_BUILD_DEPLOY_SSH_KEY }}" >
           ~/.ssh/deploy_key && chmod 600 ~/.ssh/deploy_key
-      - name: Link Release
+      - name: Link Release on www1
         env:
           RELEASE_VERSION: ${{ needs.build-meta.outputs.release-version }}
           AUTOUPDATER_BRANCH: ${{ needs.build-meta.outputs.autoupdater-branch }}
@@ -535,6 +535,22 @@ jobs:
           -oStrictHostKeyChecking=no
           -oIdentitiesOnly=yes
           firmware@www1.darmstadt.freifunk.net
+          "ln -n -f -s /srv/firmware/images/$RELEASE_VERSION /srv/firmware/images/$AUTOUPDATER_BRANCH"
+        # yamllint enable rule:line-length
+
+      - name: Link Release on www3
+        env:
+          RELEASE_VERSION: ${{ needs.build-meta.outputs.release-version }}
+          AUTOUPDATER_BRANCH: ${{ needs.build-meta.outputs.autoupdater-branch }}
+        # yamllint disable rule:line-length
+        run: >
+          ssh
+          -i ~/.ssh/deploy_key
+          -q
+          -oUserKnownHostsFile=/dev/null
+          -oStrictHostKeyChecking=no
+          -oIdentitiesOnly=yes
+          ffda_firmware@www3.darmstadt.freifunk.net
           "ln -n -f -s /srv/firmware/images/$RELEASE_VERSION /srv/firmware/images/$AUTOUPDATER_BRANCH"
         # yamllint enable rule:line-length
 
