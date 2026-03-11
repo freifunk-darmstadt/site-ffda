@@ -1,0 +1,94 @@
+From 0ba806c48aeb5c98ff13885c96245c8949989649 Mon Sep 17 00:00:00 2001
+From: David Bauer <mail@david-bauer.net>
+Date: Thu, 12 Mar 2026 00:56:34 +0100
+Subject: [PATCH 1/2] wifi: mt76: mt7915: set mt76 specific PS flag
+
+mt76 tracks the PSM state of a sta internally with a wcid flag. TX to
+such clients is skipped based on the presence of this flag.
+
+This flag was not added to the PS state notify handler for MT7915 chips.
+This can lead to inconsistent behavior and TX scheduling to STAs in
+power save under the condition of a TX free event after a PS sleep
+event.
+
+Set the PS flag for the STA WCID to prevent this from happening. TX gets
+skipped in presence of this flag.
+
+Signed-off-by: David Bauer <mail@david-bauer.net>
+---
+ ...t76-mt7915-set-mt76-specific-PS-flag.patch | 63 +++++++++++++++++++
+ 1 file changed, 63 insertions(+)
+ create mode 100644 patches/openwrt/0019-wifi-mt76-mt7915-set-mt76-specific-PS-flag.patch
+
+diff --git a/patches/openwrt/0019-wifi-mt76-mt7915-set-mt76-specific-PS-flag.patch b/patches/openwrt/0019-wifi-mt76-mt7915-set-mt76-specific-PS-flag.patch
+new file mode 100644
+index 00000000..d2676995
+--- /dev/null
++++ b/patches/openwrt/0019-wifi-mt76-mt7915-set-mt76-specific-PS-flag.patch
+@@ -0,0 +1,63 @@
++From: David Bauer <mail@david-bauer.net>
++Date: Thu, 12 Mar 2026 00:54:29 +0100
++Subject: wifi: mt76: mt7915: set mt76 specific PS flag
++
++mt76 tracks the PSM state of a sta internally with a wcid flag. TX to
++such clients is skipped based on the presence of this flag.
++
++This flag was not added to the PS state notify handler for MT7915 chips.
++This can lead to inconsistent behavior and TX scheduling to STAs in
++power save under the condition of a TX free event after a PS sleep
++event.
++
++Set the PS flag for the STA WCID to prevent this from happening. TX gets
++skipped in presence of this flag.
++
++Signed-off-by: David Bauer <mail@david-bauer.net>
++
++diff --git a/package/kernel/mt76/patches/820-wifi-mt76-mt7915-set-mt76-specific-PS-flag.patch b/package/kernel/mt76/patches/820-wifi-mt76-mt7915-set-mt76-specific-PS-flag.patch
++new file mode 100644
++index 0000000000000000000000000000000000000000..867f2ae52cdef38a747f88772e6c3d1a4df90e51
++--- /dev/null
+++++ b/package/kernel/mt76/patches/820-wifi-mt76-mt7915-set-mt76-specific-PS-flag.patch
++@@ -0,0 +1,40 @@
+++From 36d42359855735264ead880b724de2b7596d5055 Mon Sep 17 00:00:00 2001
+++From: David Bauer <mail@david-bauer.net>
+++Date: Wed, 11 Mar 2026 14:32:28 +0100
+++Subject: [PATCH 1/2] wifi: mt76: mt7915: set mt76 specific PS flag
+++
+++mt76 tracks the PSM state of a sta internally with a wcid flag. TX to
+++such clients is skipped based on the presence of this flag.
+++
+++This flag was not added to the PS state notify handler for MT7915 chips.
+++This can lead to inconsistent behavior and TX scheduling to STAs in
+++power save under the condition of a TX free event after a PS sleep
+++event.
+++
+++Set the PS flag for the STA WCID to prevent this from happening. TX gets
+++skipped in presence of this flag.
+++
+++Signed-off-by: David Bauer <mail@david-bauer.net>
+++---
+++ mt7915/mcu.c | 5 +++++
+++ 1 file changed, 5 insertions(+)
+++
+++diff --git a/mt7915/mcu.c b/mt7915/mcu.c
+++index a64c7361..514ca7f5 100644
+++--- a/mt7915/mcu.c
++++++ b/mt7915/mcu.c
+++@@ -423,6 +423,11 @@ static void mt7915_mcu_rx_ps_sync(struct mt7915_dev *dev, struct sk_buff *skb)
+++ 	if (!sta)
+++ 		goto out;
+++ 
++++	if (!!p->ps_bit)
++++		set_bit(MT_WCID_FLAG_PS, &wcid->flags);
++++	else
++++		clear_bit(MT_WCID_FLAG_PS, &wcid->flags);
++++
+++ 	ieee80211_sta_ps_transition_ni(sta, !!p->ps_bit);
+++ 
+++ out:
+++-- 
+++2.51.0
+++
+-- 
+2.51.0
+
