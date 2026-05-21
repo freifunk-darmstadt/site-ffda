@@ -32,7 +32,7 @@ jobs:
       COMMIT_EMAIL: info@darmstadt.freifunk.net
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: ${{ github.event.inputs.site-branch }}
 

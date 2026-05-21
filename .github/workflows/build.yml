@@ -29,7 +29,7 @@ jobs:
     name: Validate CI overrides
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Validate overrides
         run: |
           bash .github/validate-overrides.sh
@@ -78,7 +78,7 @@ jobs:
     runs-on: ubuntu-22.04
     name: Determine build-meta
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           fetch-tags: true
           fetch-depth: 0
@@ -115,9 +115,9 @@ jobs:
     runs-on: ubuntu-22.04
     name: Get Gluon targets
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           repository: ${{ needs.build-meta.outputs.gluon-repository }}
           ref: ${{ needs.build-meta.outputs.gluon-commit }}
@@ -137,8 +137,8 @@ jobs:
     runs-on: ubuntu-22.04
     name: Build host-tools
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
+      - uses: actions/checkout@v6
         with:
           repository: ${{ needs.build-meta.outputs.gluon-repository }}
           ref: ${{ needs.build-meta.outputs.gluon-commit }}
@@ -226,9 +226,9 @@ jobs:
       id-token: write
       attestations: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           repository: ${{ needs.build-meta.outputs.gluon-repository }}
           ref: ${{ needs.build-meta.outputs.gluon-commit }}
@@ -321,14 +321,14 @@ jobs:
       needs.targets.outputs.targets != '[]' &&
       github.event_name == 'push'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - uses: actions/download-artifact@v4
         with:
           path: "gluon-gha-data/gluon-output"
 
       - name: Clone Gluon
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           repository: ${{ needs.build-meta.outputs.gluon-repository }}
           ref: ${{ needs.build-meta.outputs.gluon-commit }}
@@ -462,7 +462,7 @@ jobs:
       needs.build-meta.outputs.deploy != '0' &&
       github.event_name == 'push'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - uses: actions/download-artifact@v4
         with:
@@ -542,7 +542,7 @@ jobs:
       id-token: write
       attestations: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - uses: actions/download-artifact@v4
         with:
