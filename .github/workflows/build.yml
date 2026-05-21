@@ -102,7 +102,7 @@ jobs:
         run: bash .github/build-meta.sh
 
       - name: Create Artifact of build-meta
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: build-meta
           path: ${{ steps.build-metadata.outputs.build-meta-output }}
@@ -206,7 +206,7 @@ jobs:
           --posix -C "gluon-gha-data/gluon" openwrt
 
       - name: Archive build output
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: openwrt
           path: "gluon-gha-data/openwrt"
@@ -448,7 +448,7 @@ jobs:
           -C gluon-gha-data/gluon/output/images/sysupgrade -T -
 
       - name: Archive output
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: manifest-signed
           path: gluon-gha-data/artifact-out
