@@ -7,7 +7,7 @@ on: [push, pull_request]
 jobs:
   lint-yaml:
     name: "YAML"
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     env:
       YAML_FILES: |
         .github/workflows/*.yml
@@ -20,7 +20,7 @@ jobs:
 
   shellcheck:
     name: "Shell Scripts"
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     env:
       SHELL_FILES: >-
         contrib/*.sh
@@ -34,7 +34,7 @@ jobs:
 
   image-customization:
     name: "Image-Customization"
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     env:
       LUA_FILES: >-
         image-customization.lua
@@ -47,7 +47,7 @@ jobs:
 
   json:
     name: "JSON"
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     env:
       BUILD_INFO: ${{ github.workspace }}/.github/build-info.json
     steps:
