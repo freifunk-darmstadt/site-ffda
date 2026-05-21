@@ -264,7 +264,7 @@ jobs:
         run: bash .github/free-runner-space.sh
 
       - name: Download prepared OpenWrt
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: openwrt
           path: "gluon-gha-data/openwrt"
@@ -323,7 +323,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           path: "gluon-gha-data/gluon-output"
 
@@ -335,7 +335,7 @@ jobs:
           path: 'gluon-gha-data/gluon'
 
       - name: Download prepared OpenWrt
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: openwrt
           path: "gluon-gha-data/openwrt"
@@ -464,7 +464,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           path: "gluon-gha-data/artifact-download"
 
@@ -544,7 +544,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           path: "gluon-gha-data/artifact-download"
 
