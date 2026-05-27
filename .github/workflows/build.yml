@@ -585,7 +585,7 @@ jobs:
             gluon-gha-data/release-artifacts/*
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           body_path: gluon-gha-data/release-notes.md
           make_latest: ${{ needs.build-meta.outputs.latest-release == '1' }}
